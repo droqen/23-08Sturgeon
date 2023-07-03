@@ -3,6 +3,9 @@
 	[
 		{
 			"path": "."
-		}
+		},
+		{
+			"path": "C:\\Users\\hi\\Repos\\Ambient\\guest\\rust\\examples",
+		},
 	]
 }
