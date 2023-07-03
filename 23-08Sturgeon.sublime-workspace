@@ -1,0 +1,1594 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"to_t",
+				"to_string() (as ToString)"
+			],
+			[
+				"captures",
+				"captures_iter(…)"
+			],
+			[
+				"Char",
+				"Chars (use std::str::Chars)"
+			],
+			[
+				"in_heade",
+				"in_header_title"
+			],
+			[
+				"in_header",
+				"in_header_title"
+			],
+			[
+				"in_head",
+				"in_header_title"
+			],
+			[
+				"pa",
+				"parentheses_value"
+			],
+			[
+				"in_",
+				"in_quote"
+			],
+			[
+				"fil",
+				"file_contents"
+			],
+			[
+				"am",
+				"ambient_api"
+			],
+			[
+				"local",
+				"local_to_world"
+			],
+			[
+				"rotation",
+				"from_rotation_z(…)"
+			],
+			[
+				"from_r",
+				"from_rotation_y(…)"
+			],
+			[
+				"from_ro",
+				"from_rotation_y(…)"
+			],
+			[
+				"pushed_",
+				"pushed_src"
+			],
+			[
+				"add_compon",
+				"add_components(…)"
+			],
+			[
+				"remove_compon",
+				"remove_components(…)"
+			],
+			[
+				"make_gri",
+				"make_grid_player"
+			],
+			[
+				"chil",
+				"child_mesh_and_collider"
+			],
+			[
+				"add_Co",
+				"add_components(…)"
+			],
+			[
+				"get_hx",
+				"get_hexgrid_dist(…)"
+			],
+			[
+				"prin",
+				"println\tprintln!(…)"
+			],
+			[
+				"UNI",
+				"UNIT_HEXA_ROW_OFFSET"
+			],
+			[
+				"UNIT_H",
+				"UNIT_HEXA_ROW_OFFSET"
+			],
+			[
+				"UNIT_",
+				"UNIT_HEXA_SIDE"
+			],
+			[
+				"p",
+				"playerCamera"
+			],
+			[
+				"spawn_",
+				"spawn_pair_return_parent(…)"
+			],
+			[
+				"players",
+				"playersMoveControlSetup"
+			],
+			[
+				"with",
+				"with_merge"
+			],
+			[
+				"PLAY",
+				"playerDoffer"
+			],
+			[
+				"add",
+				"add_component(…)"
+			],
+			[
+				"ud_toggle",
+				"ud_toggle_up_buf"
+			],
+			[
+				"ud_tog",
+				"ud_toggle_up_buf"
+			],
+			[
+				"ud_toggl",
+				"ud_toggle_up_timer"
+			],
+			[
+				"Vec",
+				"Vec<…>"
+			],
+			[
+				"throttle",
+				"throttle_up_index"
+			],
+			[
+				"spe",
+				"speed_pin"
+			],
+			[
+				"thrott",
+				"throttle_pin"
+			],
+			[
+				"F32",
+				"f32"
+			],
+			[
+				"dofpitc",
+				"dofpitch_vel"
+			],
+			[
+				"VELTO",
+				"VELTOPIN_MAX_SPEED"
+			],
+			[
+				"VELTOPIN",
+				"VELTOPIN_LINEAR_RATE"
+			],
+			[
+				"ge",
+				"get_component(…)"
+			],
+			[
+				"vec3",
+				"Vec3"
+			],
+			[
+				"dofpitch",
+				"dofpitch_vel"
+			],
+			[
+				"Eul",
+				"EulerRot::XYZ"
+			],
+			[
+				"ambient",
+				"ambient_api"
+			],
+			[
+				"Entit",
+				"EntityId"
+			],
+			[
+				"Enti",
+				"EntityId"
+			],
+			[
+				"home_",
+				"home_member_count"
+			],
+			[
+				"FISH_HOME",
+				"FISH_HOME_MIN_DIST"
+			],
+			[
+				"FISH_VELOCI",
+				"FISH_VELOCITY_MATCH_RADIUS"
+			],
+			[
+				"match",
+				"match_vel_matches"
+			],
+			[
+				"FISH_EDGE_",
+				"FISH_EDGE_MAX_FORCE"
+			],
+			[
+				"FISH",
+				"FISH_EDGE_MAX_RADIUS"
+			],
+			[
+				"MIN",
+				"FISH_EDGE_MIN_RADIUS"
+			],
+			[
+				"FISH_REPEL",
+				"FISH_REPEL_MAX_FORCE"
+			],
+			[
+				"dis",
+				"dist_to_peer"
+			],
+			[
+				"initi",
+				"initial_angle"
+			],
+			[
+				"from_",
+				"from_rotation_z"
+			],
+			[
+				"send_",
+				"send_client_broadcast_unreliable"
+			],
+			[
+				"add_",
+				"add_components"
+			],
+			[
+				"w",
+				"with_default"
+			],
+			[
+				"transl",
+				"make_transformable"
+			],
+			[
+				"camera",
+				"make_perspective_infinite_reverse_camera"
+			],
+			[
+				"mouse_po",
+				"mouse_position"
+			],
+			[
+				"make_",
+				"make_perspective_infinite_reverse_camera"
+			],
+			[
+				"wi",
+				"with_merge"
+			],
+			[
+				"tran",
+				"transparency_group"
+			],
+			[
+				"slider_",
+				"slider_start_pos"
+			],
+			[
+				"f",
+				"from_rotation_z"
+			],
+			[
+				"runner",
+				"runner_x_pin"
+			],
+			[
+				"target",
+				"lookat_target"
+			],
+			[
+				"cu",
+				"cube_unwrap"
+			],
+			[
+				"send",
+				"send_client_broadcast_reliable"
+			],
+			[
+				"mak",
+				"make_sphere"
+			],
+			[
+				"click",
+				"click_preview_ball"
+			],
+			[
+				"cl",
+				"clickable_name"
+			],
+			[
+				"curs",
+				"cursor_3d"
+			],
+			[
+				"Player",
+				"PlayerInputClick"
+			],
+			[
+				"ray_",
+				"ray_origin"
+			],
+			[
+				"qu",
+				"quatDelta"
+			],
+			[
+				"text",
+				"textcon_id"
+			],
+			[
+				"from",
+				"from_rotation_x"
+			],
+			[
+				"from_rotation",
+				"from_rotation_x"
+			],
+			[
+				"STUNN",
+				"STUNNED_VY"
+			],
+			[
+				"ladd",
+				"laddholding"
+			],
+			[
+				"pinjump",
+				"pinjump_held"
+			],
+			[
+				"LADD",
+				"LADDER_CLIMBING_ACCEL"
+			],
+			[
+				"overlapp",
+				"overlapping_ladder_above"
+			],
+			[
+				"aldd",
+				"laddholding"
+			],
+			[
+				"el",
+				"elseif"
+			],
+			[
+				"WALKING",
+				"WALKING_SPEED"
+			],
+			[
+				"SWIM_FALLIN",
+				"SWIM_FALLING_JUMP_POWER"
+			],
+			[
+				"AIR_M",
+				"AIR_MIN_NOCONTROL_XSPEED"
+			],
+			[
+				"AIR_",
+				"AIR_MIN_NOCONTROL_XSPEED"
+			],
+			[
+				"T",
+				"THREE_HOURS_IN_SECONDS"
+			],
+			[
+				"ov",
+				"overlapping_ladder"
+			],
+			[
+				"diver",
+				"diver_classes"
+			],
+			[
+				"GRIDMOVE",
+				"GRIDMOVE_DELAY"
+			],
+			[
+				"L",
+				"LAYER_SOLID"
+			],
+			[
+				"GRID",
+				"GRIDMOVE_HALFGRIDSIZE"
+			],
+			[
+				"LAYER_",
+				"LAYER_SOLID"
+			],
+			[
+				"LAND_",
+				"LAND_FRICTION_LINEAR"
+			],
+			[
+				"jump",
+				"jumped_vx"
+			],
+			[
+				"JUMP",
+				"LAND_JUMP_VX"
+			],
+			[
+				"water",
+				"water_submergedness"
+			],
+			[
+				"gri",
+				"gridmove_x1"
+			],
+			[
+				"get_",
+				"get_misaligment"
+			],
+			[
+				"scale",
+				"scalex"
+			],
+			[
+				"overlappin",
+				"overlapping_ladderbelow"
+			],
+			[
+				"gridmove",
+				"gridmove_y1"
+			],
+			[
+				"scoreL",
+				"scoreLabelX"
+			],
+			[
+				"world",
+				"WorldWidth"
+			],
+			[
+				"toTar",
+				"toTargetMagnitude"
+			],
+			[
+				"tot",
+				"toTargetX"
+			],
+			[
+				"BoidAccel",
+				"BoidAccelerateDesiredSpeed"
+			],
+			[
+				"knobs_",
+				"knobs_mbtn"
+			],
+			[
+				"BoidR",
+				"BoidRepulsionMultiplier"
+			],
+			[
+				"wo",
+				"worldHeight"
+			],
+			[
+				"norma",
+				"normalizedX"
+			],
+			[
+				"toO",
+				"toOtherX"
+			],
+			[
+				"text-de",
+				"text-decoration-skip-ink"
+			],
+			[
+				"trans",
+				"translateX()"
+			],
+			[
+				"break",
+				"break-word"
+			],
+			[
+				"pale",
+				"palegreen"
+			],
+			[
+				"purpl",
+				"mediumpurple"
+			],
+			[
+				"User",
+				"UserTracker"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/Default/Syntax Tests.sublime-build",
+					""
+				],
+				[
+					"Packages/Default/Syntax Tests.sublime-build",
+					"All Syntaxes"
+				],
+				[
+					"Packages/Default/Syntax Tests.sublime-build",
+					"Performance"
+				],
+				[
+					"Packages/Default/Syntax Tests.sublime-build",
+					"Regex Compatibility"
+				],
+				[
+					"Packages/PackageDev/Package/Convert to ....sublime-build",
+					""
+				],
+				[
+					"Packages/PackageDev/Package/Convert to ....sublime-build",
+					"JSON"
+				],
+				[
+					"Packages/PackageDev/Package/Convert to ....sublime-build",
+					"Property List"
+				],
+				[
+					"Packages/PackageDev/Package/Convert to ....sublime-build",
+					"YAML (Block Style)"
+				],
+				[
+					"Packages/PackageDev/Package/Convert to ....sublime-build",
+					"YAML (Default Style)"
+				]
+			],
+			[
+				"Packages/PackageDev/Package/Convert to ....sublime-build",
+				"YAML (Default Style)"
+			]
+		],
+		[
+			[
+				[
+					"Packages/Lua Love/LuaLove.sublime-build",
+					""
+				],
+				[
+					"Packages/Lua Love/LuaLove.sublime-build",
+					"LuaJIT Run File"
+				],
+				[
+					"Packages/Lua Love/LuaLove.sublime-build",
+					"Lua Run File"
+				],
+				[
+					"Packages/Lua Love/LuaLove.sublime-build",
+					"ldoc: File"
+				],
+				[
+					"Packages/Lua Love/LuaLove.sublime-build",
+					"ldoc: Project"
+				]
+			],
+			[
+				"Packages/Lua Love/LuaLove.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/Rust/Rust.sublime-build",
+					""
+				],
+				[
+					"Packages/Rust/Rust.sublime-build",
+					"Run"
+				],
+				[
+					"Packages/Rust/Rust.sublime-build",
+					"Build & Run"
+				]
+			],
+			[
+				"Packages/Rust/Rust.sublime-build",
+				"Build & Run"
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 104.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"package",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"bui",
+				"Build With: love2d"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"material",
+				"Material Theme: Activate theme"
+			],
+			[
+				"ayu",
+				"ayu: Activate theme"
+			],
+			[
+				"AY",
+				"ayu: Activate theme"
+			],
+			[
+				"MATERIAL",
+				"Material Theme: Activate theme"
+			],
+			[
+				"material theme",
+				"Material Theme: Activate theme"
+			],
+			[
+				"packains",
+				"Package Control: Install Package"
+			],
+			[
+				"package dis",
+				"Package Control: Disable Package"
+			],
+			[
+				"preferences",
+				"Preferences: Package Control Settings – User"
+			],
+			[
+				"settings",
+				"Preferences: Package Control Settings – User"
+			],
+			[
+				"package settings",
+				"Preferences: Package Control Settings – User"
+			],
+			[
+				"table",
+				"Table Editor: Enable for current view"
+			],
+			[
+				"install p",
+				"Package Control: Install Package"
+			],
+			[
+				"new pa",
+				"Preferences: Browse Packages"
+			],
+			[
+				"package upd",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"packa",
+				"Package Control: Install Package"
+			],
+			[
+				"omni",
+				"OmniSharpSublime: Build"
+			],
+			[
+				"omnisharp",
+				"OmniSharpSublime: Build"
+			],
+			[
+				"Package",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 297.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"view.run_command(\"insert_datetime\")",
+			"omni_port",
+			"python",
+			"os.dir",
+			"dir(data)",
+			"dir()",
+			"data",
+			"data+=\"\\\\Sublime Text 3\\\\Packages\"",
+			"data=os.getenv('APPDATA')",
+			"print (os.getenv('APPDATA'))",
+			"import os",
+			"print(os)",
+			"print(\"%APPDATA%\")",
+			"print(%APPDATA%)",
+			"print(APPDATA)",
+			"print('hi')",
+			"print",
+			"print 'hi';",
+			"print 'hi'",
+			"print \"hi\"",
+			"plugin",
+			"dir()",
+			"dir",
+			"python OmniSharpSublime.py",
+			"python omnisharp",
+			"omnisharp",
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/hi/Repos/23-08Sturgeon"
+	],
+	"file_history":
+	[
+		"/C/Users/hi/Repos/23-08Sturgeon/Cargo.toml",
+		"/C/Users/hi/Sync/a/2023 moon phases/for-07-03-buck-moon/02-scene-for-ambient/model_place.tscn",
+		"/C/Users/hi/Repos/23-07Buck/ct1_parse_godot_scene/src/main.rs",
+		"/C/Users/hi/Repos/23-07Buck/w04_sceneloader/Cargo.toml",
+		"/C/Users/hi/Repos/23-07Buck/w04_sceneloader/src/server.rs",
+		"/C/Users/hi/Repos/23-07Buck/ct1_parse_godot_scene/Cargo.toml",
+		"/C/Users/hi/Repos/23-07Buck/w04_sceneloader/ambient.toml",
+		"/C/Users/hi/Repos/23-07Buck/w04_sceneloader/cubesSceneTest.tscn",
+		"/C/Users/hi/Repos/23-07Buck/w04_sceneloader/src/sceneloader/scene_raw.rs",
+		"/C/Users/hi/Repos/23-07Buck/w04_sceneloader/src/sceneloader.rs",
+		"/C/Users/hi/Repos/23-07Buck/w04_sceneloader/src/scene_raw.rs",
+		"/C/Users/hi/Repos/23-07Buck/Cargo.toml",
+		"/C/Users/hi/Repos/23-07Buck/ct1_parse_godot_scene/cubesSceneTest.tscn",
+		"/C/Users/hi/Repos/23-07Buck/ct1_parse_godot_scene/main.tscn",
+		"/C/Users/hi/Sync/a/2023 moon phases/for-07-03-buck-moon/02-scene-for-ambient/main.tscn",
+		"/C/Users/hi/Repos/23-07Buck/w03_ragna/assets/buildingside/pipeline.toml",
+		"/C/Users/hi/Repos/23-07Buck/w03_ragna/src/server.rs",
+		"/C/Users/hi/Repos/Ambient/guest/rust/examples/games/minigolf/CREDITS.md",
+		"/C/Users/hi/Repos/Ambient/guest/rust/examples/basics/image/src/server.rs",
+		"/C/Users/hi/Repos/23-07Buck/w03_ragna/assets/handmadeguy.toml",
+		"/C/Users/hi/Repos/Ambient/guest/rust/examples/games/minigolf/assets/pipeline.toml",
+		"/C/Users/hi/Repos/23-07Buck/ct0_async/Cargo.toml",
+		"/C/Users/hi/Repos/23-07Buck/ct0_async/src/main.rs",
+		"/C/Users/hi/Repos/23-07Buck/w03_ragna/assets/handmadeguy/pipeline.toml",
+		"/C/Users/hi/Repos/23-07Buck/w03_ragna/assets/pipeline.toml",
+		"/C/Users/hi/Repos/23-07Buck/w03_ragna/assets/handmadeguy/handmadeguy.png",
+		"/C/Users/hi/Repos/Ambient/guest/rust/examples/basics/image/assets/pipeline.toml",
+		"/C/Users/hi/Repos/23-07Buck/w02-broughlike/ambient.toml",
+		"/C/Users/hi/Repos/23-07Buck/w02-broughlike/src/server.rs",
+		"/C/Users/hi/Repos/23-07Buck/w02-broughlike/devlog.txt",
+		"/C/Users/hi/Repos/23-07Buck/Cargo.lock",
+		"/C/Users/hi/Repos/23-07Buck/w02-broughlike/assets/pipeline.toml",
+		"/C/Users/hi/Repos/23-07Buck/w02-broughlike/src/client.rs",
+		"/C/Users/hi/Repos/Ambient/guest/rust/api_core/src/global/entity_id.rs",
+		"/C/Users/hi/Repos/23-07Buck/w01_hex/src/server.rs",
+		"/C/Users/hi/Repos/23-07Buck/w01_hex/ambient.toml",
+		"/C/Users/hi/Repos/23-07Buck/test02-parent-collider/src/server.rs",
+		"/C/Users/hi/Repos/23-07Buck/test01-filter-scopes/src/main.rs",
+		"/C/Users/hi/Repos/23-07Buck/w01_hex/src/client.rs",
+		"/C/Users/hi/Repos/Ambient/guest/rust/examples/basics/screen_ray/src/client.rs",
+		"/C/Users/hi/Repos/23-07Buck/w00_3dof/src/server.rs",
+		"/C/Users/hi/Sync/a/For Accounting Purposes/2023 expenses/2023 expenses.txt",
+		"/C/Users/hi/Repos/23-07Buck/Barotrauma tutorial notes.txt",
+		"/C/Users/hi/Repos/23-07Buck/conversation.txt",
+		"/C/Users/hi/Repos/23-07Buck/todo.txt",
+		"/C/Users/hi/Sync/a/txt/unsorted stuff/snake/charlist.md",
+		"/C/Users/hi/Sync/a/txt/unsorted stuff/snake/artist names.md",
+		"/C/Users/hi/Sync/a/txt/unsorted stuff/snake/2023/Annora Snow logs.txt",
+		"/C/Users/hi/Sync/a/txt/unsorted stuff/snake/2023/Annora Snow.txt",
+		"/C/Users/hi/Repos/Ambient/guest/rust/examples/basics/first_person_camera/src/server.rs",
+		"/C/Users/hi/Repos/23-07Buck/test00-child/src/server.rs",
+		"/C/Users/hi/RustProjects/AmbientProjects/test00-child/src/server.rs",
+		"/C/Users/hi/Repos/23-07Buck/w00_3dof/asset-credits.txt",
+		"/C/Users/hi/Repos/Ambient/guest/rust/examples/basics/asset_loading/src/server.rs",
+		"/C/Users/hi/Repos/23-07Buck/w00_3dof/src/client.rs",
+		"/C/Users/hi/Repos/23-07Buck/w00_3dof/ambient.toml",
+		"/C/Users/hi/Repos/23-07Buck/w00_3dof/assets/pipeline.json",
+		"/C/Users/hi/RustProjects/AmbientProjects/00BuckWorkspace/Cargo.toml",
+		"/C/Users/hi/RustProjects/AmbientProjects/00BuckWorkspace/w00_3dof/ambient.toml",
+		"/C/Users/hi/RustProjects/AmbientProjects/00BuckWorkspace/w00_3dof/src/server.rs",
+		"/C/Users/hi/RustProjects/AmbientProjects/00BuckWorkspace/w00_3dof/src/client.rs",
+		"/C/Users/hi/Repos/Ambient/guest/rust/examples/basics/image/assets/pipeline.json",
+		"/C/Users/hi/Repos/Ambient/guest/rust/examples/basics/fog/src/client.rs",
+		"/C/Users/hi/Repos/Ambient/guest/rust/examples/games/minigolf/ambient.toml",
+		"/C/Users/hi/RustProjects/AmbientProjects/0.3.0-dev/a08-basicui-string-help/Cargo.toml",
+		"/C/Users/hi/RustProjects/AmbientProjects/0.3.0-dev/a11-linegraph/ambient.toml",
+		"/C/Users/hi/RustProjects/AmbientProjects/0.3.0-dev/a11-linegraph/src/server.rs",
+		"/C/Users/hi/Repos/Ambient/guest/rust/examples/games/minigolf/src/server.rs",
+		"/C/Users/hi/Repos/Ambient/guest/rust/examples/games/minigolf/Cargo.toml",
+		"/C/Users/hi/RustProjects/AmbientProjects/0.3.0-dev/a11-linegraph/Cargo.toml",
+		"/C/Users/hi/RustProjects/AmbientProjects/0.3.0-dev/a10-boids/src/client.rs",
+		"/C/Users/hi/RustProjects/AmbientProjects/0.3.0-dev/a10-boids/src/server.rs",
+		"/C/Users/hi/RustProjects/AmbientProjects/0.3.0-dev/a10-boids/ambient.toml",
+		"/C/Users/hi/AppData/Local/Temp/editor-e65af000-8327-4cb5-a473-513f0c39643a/home/public/www.droqen.com/1620846267/index.html",
+		"/C/Users/hi/RustProjects/AmbientProjects/0.3.0-dev/a09-score/src/server.rs",
+		"/C/Users/hi/RustProjects/AmbientProjects/0.3.0-dev/a10-boids/assets/pipeline.json",
+		"/C/Users/hi/RustProjects/AmbientProjects/0.3.0-dev/a10-boids/Cargo.toml",
+		"/C/Users/hi/RustProjects/AmbientProjects/0.3.0-dev/a07-dodger/src/server.rs",
+		"/C/Users/hi/RustProjects/AmbientProjects/0.3.0-dev/a09-score/src/client.rs",
+		"/C/Users/hi/RustProjects/AmbientProjects/0.3.0-dev/a09-score/ambient.toml",
+		"/C/Users/hi/RustProjects/AmbientProjects/0.3.0-dev/a09-score/Cargo.toml",
+		"/C/Users/hi/RustProjects/AmbientProjects/0.3.0-dev/a08-basicui/Cargo.toml",
+		"/C/Users/hi/RustProjects/AmbientProjects/0.3.0-dev/a08-basicui/ambient.toml",
+		"/C/Users/hi/RustProjects/AmbientProjects/0.3.0-dev/a08-basicui/src/client.rs",
+		"/C/Users/hi/RustProjects/AmbientProjects/0.3.0-dev/a08-basicui/src/server.rs",
+		"/C/Users/hi/Repos/Ambient/guest/rust/examples/games/music_sequencer/src/client.rs",
+		"/C/Users/hi/Repos/Ambient/guest/rust/examples/games/music_sequencer/src/common.rs",
+		"/C/Users/hi/Repos/Ambient/guest/rust/examples/ui/editors/src/client.rs",
+		"/C/Users/hi/RustProjects/AmbientProjects/0.3.0-dev/a07-dodger/src/client.rs",
+		"/C/Users/hi/Repos/Ambient/guest/rust/examples/ui/editors/Cargo.toml",
+		"/C/Users/hi/RustProjects/AmbientProjects/0.3.0-dev/a07-dodger/ambient.toml",
+		"/C/Users/hi/RustProjects/AmbientProjects/DroqensAmbientProjects.sublime-project",
+		"/C/Users/hi/RustProjects/AmbientProjects/0.3.0-dev/a05-compdesk-030/Cargo.toml",
+		"/C/Users/hi/Rust Projects/Ambient Projects/0.3.0-dev/a06-runner/src/server.rs",
+		"/C/Users/hi/Rust Projects/Ambient Projects/0.3.0-dev/al5/src/server.rs",
+		"/C/Users/hi/Rust Projects/Ambient Projects/0.3.0-dev/a06-runner/src/client.rs",
+		"/C/Users/hi/Repos/Ambient/guest/rust/examples/ui/button/src/client.rs",
+		"/C/Users/hi/Rust Projects/Ambient Projects/0.3.0-dev/al4/assets/pipeline.json",
+		"/C/Users/hi/Rust Projects/Ambient Projects/0.3.0-dev/al4/Cargo.toml",
+		"/C/Users/hi/Rust Projects/Ambient Projects/0.3.0-dev/a05-compdesk-030-location-searched-err/Cargo.toml",
+		"/C/Users/hi/Rust Projects/Ambient Projects/0.3.0-dev/a05-compdesk-030-no-build-or-target/a05-compdesk-030/Cargo.toml",
+		"/C/Users/hi/Rust Projects/Ambient Projects/0.3.0-dev/al4/src/server.rs",
+		"/C/Users/hi/Rust Projects/Ambient Projects/0.3.0-dev/asset_loading_new/Cargo.toml",
+		"/C/Users/hi/Rust Projects/Ambient Projects/0.3.0-dev/al3/Cargo.toml",
+		"/C/Users/hi/Rust Projects/Ambient Projects/0.3.0-dev/a06-runner/ambient.toml",
+		"/C/Users/hi/Rust Projects/Ambient Projects/0.3.0-dev/al2/ambient.toml",
+		"/C/Users/hi/Rust Projects/Ambient Projects/0.3.0-dev/al3/ambient.toml",
+		"/C/Users/hi/Rust Projects/Ambient Projects/0.3.0-dev/al3/assets/pipeline.json",
+		"/C/Users/hi/Rust Projects/Ambient Projects/0.3.0-dev/asset_loading_new/ambient.toml",
+		"/C/Users/hi/Rust Projects/Ambient Projects/0.3.0-dev/asset_loading_new/assets/pipeline.json",
+		"/C/Users/hi/Rust Projects/Ambient Projects/0.3.0-dev/a05-compdesk-030/src/server.rs",
+		"/C/Users/hi/Rust Projects/Ambient Projects/0.3.0-dev/a05-compdesk-030/Cargo.toml",
+		"/C/Users/hi/Rust Projects/Ambient Projects/0.3.0-dev/a05-compdesk-030/build/ambient.toml",
+		"/C/Users/hi/Rust Projects/Ambient Projects/droqens ambient projects.sublime-project",
+		"/C/Users/hi/Rust Projects/Ambient Projects/0.3.0-dev/a05-compdesk-030/assets/pipeline.json",
+		"/C/Users/hi/Repos/Ambient/guest/rust/examples/basics/asset_loading/assets/pipeline.json",
+		"/C/Users/hi/Rust Projects/Ambient Projects/a06-basic-mario/ambient.toml",
+		"/C/Users/hi/Rust Projects/Ambient Projects/examples/README.md",
+		"/C/Users/hi/Rust Projects/Ambient Projects/a05-computerDesk/src/client.rs",
+		"/C/Users/hi/Rust Projects/Ambient Projects/a05-computerDesk/src/server.rs",
+		"/C/Users/hi/Repos/Ambient/CHANGELOG.md",
+		"/C/Users/hi/Rust Projects/Ambient Projects/a05-computerDesk/assets/pipeline.json",
+		"/C/Users/hi/Repos/Ambient/guest/rust/examples/basics/asset_loading/Cargo.toml",
+		"/C/Users/hi/Rust Projects/Ambient Projects/a05-computerDesk/Cargo.toml",
+		"/C/Users/hi/Rust Projects/Ambient Projects/a05-2/assets/pipeline.json",
+		"/C/Users/hi/Rust Projects/Ambient Projects/a04-HoverDesc/ambient.toml",
+		"/C/Users/hi/Rust Projects/Ambient Projects/a04-HoverDesc/src/client.rs",
+		"/C/Users/hi/Rust Projects/Ambient Projects/a04-HoverDesc/src/server.rs"
+	],
+	"find":
+	{
+		"height": 33.0
+	},
+	"find_in_files":
+	{
+		"height": 286.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"scrollbar_highlights": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"use_gitignore": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 33.0
+	},
+	"input":
+	{
+		"height": 98.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.LSP Log Panel":
+	{
+		"height": 0.0
+	},
+	"output.diagnostics":
+	{
+		"height": 0.0
+	},
+	"output.exec":
+	{
+		"height": 37.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.mdpopups":
+	{
+		"height": 0.0
+	},
+	"output.package_dev":
+	{
+		"height": 96.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 192.0
+	},
+	"output.variable_get":
+	{
+		"height": 100.0
+	},
+	"pinned_build_system": "Packages/Lua/Lua.sublime-build",
+	"project": "23-08Sturgeon.sublime-project",
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"artist",
+				"snake\\artist names.md"
+			],
+			[
+				"cha",
+				"snake\\charlist.md"
+			],
+			[
+				"charl",
+				"snake\\charlist.md"
+			],
+			[
+				"charlist",
+				"snake\\charlist.md"
+			],
+			[
+				"art",
+				"snake\\artist names.md"
+			],
+			[
+				"arti",
+				"snake\\artist names.md"
+			],
+			[
+				"ARTIST",
+				"snake\\artist names.md"
+			],
+			[
+				"charli",
+				"snake\\charlist.md"
+			],
+			[
+				"junkyard",
+				"2022\\messhof-gb\\rough gb thoughts\\2022-04-18-Junkyard.txt"
+			],
+			[
+				"char",
+				"snake\\charlist.md"
+			],
+			[
+				"lawson",
+				"2021\\writing\\01-07\\vampire_nosferatu_lawson.md"
+			],
+			[
+				"poesy",
+				"txt/2020/writing/Poesy:puff.txt"
+			],
+			[
+				"florence",
+				"txt/2021/08-aug/00-Florence.md"
+			],
+			[
+				"KITE",
+				"txt/2020/writing/Kite:mecha-pilot.txt"
+			],
+			[
+				"laws",
+				"txt/2021/writing/vampire_nosferatu_lawson.md"
+			],
+			[
+				"insec",
+				"txt/2021/diary/07JUL-03-InsectAspectWanderHome.md"
+			],
+			[
+				"kite",
+				"txt/2020/writing/Kite:mecha-pilot.txt"
+			],
+			[
+				"haiku",
+				"txt/2021/posts/04APR_HaikuDraft3.md"
+			],
+			[
+				"kuma",
+				"txt/2021/writing/04Apr_Waterkuma.txt"
+			],
+			[
+				"keys",
+				"txt/2020/HMDL playtest notes/keys.txt"
+			],
+			[
+				"fashion",
+				"txt/2021/design-projects/FASHION_DROQ.md"
+			],
+			[
+				"manifold",
+				"txt/accounting by year/droq-invoices/sent 2019/0010 - Manifold Garden (Jul).txt"
+			],
+			[
+				"manifol",
+				"txt/2019/design work/manifold garden/0930-manifold garden 0percent route.txt"
+			],
+			[
+				"laund",
+				"txt/ongoing reference material/laundry.txt"
+			],
+			[
+				"february",
+				"txt/2021/diary/02FEBRUARY_FashionGame.md"
+			],
+			[
+				"histo",
+				"full history (c.v.).txt"
+			],
+			[
+				"january",
+				"2021/diary/01JANUARY.txt"
+			],
+			[
+				"parabox",
+				"2021/design-projects/parabox-feedback.txt"
+			],
+			[
+				"key",
+				"txt/2020/HMDL playtest notes/keys.txt"
+			],
+			[
+				"notes",
+				"txt/gathered notes.txt"
+			],
+			[
+				"fallco",
+				"txt/2020/writing/fallcoat-skye-mage.txt"
+			],
+			[
+				"wolf",
+				"txt/2020/wolf documentaries.txt"
+			],
+			[
+				"collab",
+				"txt/2020/writing/2020-10-14-collab-philosophy.txt"
+			],
+			[
+				"invoice",
+				"txt/accounting by year/droq-invoices/sent 2018/000B2 - HES Experimental Games Workshop.txt"
+			],
+			[
+				"smoothie",
+				"txt/ongoing reference material/food recipes #3 coronavirus/SMOOTHIE master recipe.txt"
+			],
+			[
+				"baguette",
+				"txt/ongoing reference material/food recipes #3 coronavirus/How to Freeze and Reheat Baguette.txt"
+			],
+			[
+				"itch",
+				"txt/2020/projects/0528-hdml-Oubliette/itch-devlog-keys.txt"
+			],
+			[
+				"noodle",
+				"txt/ongoing reference material/food recipes #3 coronavirus/How To Cook The Flat Dry Noodles.txt"
+			],
+			[
+				"lemon",
+				"txt/ongoing reference material/food recipes #3 coronavirus/lemon bars (squares!!!).txt"
+			],
+			[
+				"tomato",
+				"txt/ongoing reference material/food recipes #2 post-vanc/wang gang tomato egg rice.txt"
+			],
+			[
+				"master smo",
+				"txt/ongoing reference material/food recipes #3 coronavirus/SMOOTHIE master recipe.txt"
+			],
+			[
+				"miso",
+				"txt/ongoing reference material/food recipes #1/Ian Snyder's Tortillas.txt"
+			],
+			[
+				"rice",
+				"ongoing reference material/food recipes #3 coronavirus/rice in an instant pot.txt"
+			],
+			[
+				"kte",
+				"2020/writing/Kite:mecha-pilot.txt"
+			],
+			[
+				"cauli",
+				"txt/ongoing reference material/food recipes #1/cauliflower soup.txt"
+			],
+			[
+				"",
+				"DELETE ME FROM WISHLIST"
+			],
+			[
+				"caul",
+				"txt/ongoing reference material/food recipes #1/cauliflower soup.txt"
+			],
+			[
+				"aesthetics",
+				"txt/previous years/2017 or earlier/everything else/all done!/promises to myself/DROQEN'S AESTHETICS.TXT"
+			],
+			[
+				"2019 wowo",
+				"accounting by year/2019/wowow gifty expenses.droqtable"
+			],
+			[
+				"invoic",
+				"accounting by year/droq-invoices/sent 2019/000E - Bravery Network Server Work.txt"
+			],
+			[
+				"droqen",
+				"accounting by year/2019/droqen games expenses.droqtable"
+			],
+			[
+				"wang",
+				"ongoing reference material/food recipes #2 post-vanc/wang gang mapo.txt"
+			],
+			[
+				"droqen exp",
+				"accounting by year/2019/droqen games expenses.droqtable"
+			],
+			[
+				"expenses",
+				"accounting by year/2019/wowow gifty expenses.droqtable"
+			],
+			[
+				"turn",
+				"accounting by year/2019/turnip prices week of october 7th.txt"
+			],
+			[
+				"caulo",
+				"ongoing reference material/food recipes #1/cauliflower soup.txt"
+			],
+			[
+				"spark",
+				"txt\\ongoing reference material\\SparkVPS Credentials & Upload Procedure.txt"
+			],
+			[
+				"zzz",
+				"txt\\previous years\\2018\\memories\\shelleyzzz.txt"
+			],
+			[
+				"void",
+				"txt\\2019\\design work\\void bastards\\challenge modes july 13.txt"
+			],
+			[
+				"just a heap",
+				"txt/previous years/2018/art writing & ideas/just a heap of mechanic ideas.txt"
+			],
+			[
+				"jord",
+				"txt/previous years/2018/art writing & ideas/Conversations/jord.txt"
+			],
+			[
+				"shift",
+				"2019 raw code/html/lorules/shift.html"
+			],
+			[
+				"meta",
+				"2019 raw code/html/lorules/meta.html"
+			],
+			[
+				"intro",
+				"2019 raw code/html/lorules/intro.html"
+			],
+			[
+				"lorules/index",
+				"2019 raw code/html/lorules/index.html"
+			],
+			[
+				"index",
+				"websites/droqen-w/index.html"
+			],
+			[
+				"dld.css",
+				"2019 raw code/html/lorules/dld.css"
+			],
+			[
+				"intro.html",
+				"2019 raw code/html/lorules/intro.html"
+			],
+			[
+				"lorules.css",
+				"2019 raw code/html/lorules/dld.css"
+			],
+			[
+				"lorules",
+				"2019 raw code/html/lorules/lorules.html"
+			],
+			[
+				"debrief",
+				"2019 raw code/html/lorules/lorules-debrief.html"
+			],
+			[
+				"lorude",
+				"2019 raw code/html/lorules/lorules-debrief.html"
+			],
+			[
+				"crispygroup",
+				"2019_Node_Crispy_Project/_lib/CrispyGroup.js"
+			],
+			[
+				"crispyscreen",
+				"2019_Node_Crispy_Project/_lib/CrispyScreenInputs.js"
+			],
+			[
+				"crispyscr",
+				"2019_Node_Crispy_Project/_lib/CrispyScreenInputs.js"
+			],
+			[
+				"crispyprinter",
+				"2019_Node_Crispy_Project/_lib/CrispyPrinter.js"
+			],
+			[
+				"crispbod",
+				"2019_Node_Crispy_Project/_lib/CrispyBod.js"
+			],
+			[
+				"crispybod",
+				"2019_Node_Crispy_Project/_lib/CrispyBod.js"
+			],
+			[
+				"crispyprin",
+				"2019_Node_Crispy_Project/_lib/CrispyPrinter.js"
+			],
+			[
+				"crispykey",
+				"2019_Node_Crispy_Project/_lib/CrispyKeyStackerSetup.js"
+			],
+			[
+				"crispyprine",
+				"2019_Node_Crispy_Project/_lib/CrispyPrinter.js"
+			],
+			[
+				"crispygrid",
+				"2019_Node_Crispy_Project/_lib/CrispyGrid.js"
+			],
+			[
+				"crispygro",
+				"2019_Node_Crispy_Project/_lib/CrispyGroup.js"
+			],
+			[
+				"crispybodgro",
+				"2019_Node_Crispy_Project/_lib/CrispyBodGroup.js"
+			],
+			[
+				"crispkey",
+				"2019_Node_Crispy_Project/_lib/CrispyKeyStackerSetup.js"
+			],
+			[
+				"crispykeystack",
+				"2019_Node_Crispy_Project/_lib/CrispyKeyStackerSetup.js"
+			],
+			[
+				"GAME_CODE_01",
+				"2019 raw code/node/pixi/navdi_archives/v00 - no saved version of navdi/GAME_CODE_01CoinsAndMonsters.js"
+			],
+			[
+				"coinsan",
+				"2019 raw code/node/pixi/navdi_archives/v00 - no saved version of navdi/GAME_CODE_01CoinsAndMonsters.js"
+			],
+			[
+				"fail",
+				"txt/temporary notes/leftovers_writing/failed app.txt"
+			],
+			[
+				"vlogg",
+				"txt/temporary notes/leftovers_writing/vlogger.txt"
+			],
+			[
+				"bffl",
+				"txt/temporary notes/leftovers_writing/bffl.txt"
+			],
+			[
+				"navdi-dev",
+				"2019 raw code/node/pixi/navdi-dev.js"
+			],
+			[
+				"banana",
+				"txt/numbers and figures/food recipes #1/GRANDMA'S banana bread.txt"
+			],
+			[
+				"DEV_",
+				"2019 raw code/node/pixi/DEV_CODE_0402Touch.js"
+			],
+			[
+				"bodgroup",
+				"2019 raw code/node/crispy/www/CrispyBodGroup.js"
+			],
+			[
+				"GAME_CO",
+				"2019 raw code/node/pixi/GAME_CODE.js"
+			],
+			[
+				"GAME_CODE",
+				"2019 raw code/node/pixi/GAME_CODE.js"
+			],
+			[
+				"Spark",
+				"txt/numbers and figures/SparkVPS Credentials & Upload Procedure.txt"
+			],
+			[
+				"china",
+				"txt/projects: DEADLINED/2019-02-13-CHINA CITY PLANS.txt"
+			],
+			[
+				"home",
+				"txt/for accounting purposes/2018/business use of home expenses.droqtable"
+			],
+			[
+				"japan",
+				"txt/projects: DEADLINED/all done!/Japan Trip Plans.txt"
+			],
+			[
+				"navdi",
+				"2019 raw code/node/pixi/navdi.js"
+			],
+			[
+				"2018 home",
+				"txt/for accounting purposes/2018/business use of home expenses.droqtable"
+			],
+			[
+				"2019 home",
+				"txt/for accounting purposes/2019/business use of home expenses.droqtable"
+			],
+			[
+				"shelley",
+				"txt/memories/shelley's mind/waiting for me.txt"
+			],
+			[
+				"2019/",
+				"txt/for accounting purposes/2019/droqen games expenses.droqtable"
+			],
+			[
+				"chicken",
+				"txt/numbers and figures/food recipes #1/GRANDMA'S CAN CHICKEN.TXT"
+			],
+			[
+				"kalt",
+				"txt/projects: DEADLINED/2019-02-15-Kalt explorer.txt"
+			],
+			[
+				"grandma",
+				"txt/numbers and figures/food recipes #1/GRANDMA'S CAN CHICKEN.TXT"
+			],
+			[
+				"2019/droqen",
+				"txt/for accounting purposes/2019/droqen games sales journal.droqtable"
+			],
+			[
+				"app.js",
+				"2019 raw code/node/pixi/app.js"
+			],
+			[
+				"expen",
+				"txt/for accounting purposes/2018/expenses.droqtable"
+			],
+			[
+				"click",
+				"2019 raw code/html/capture_click.html"
+			],
+			[
+				"visa",
+				"txt/projects: DEADLINED/2019-01-22-CHINA VISA APPLICATION.txt"
+			],
+			[
+				"dorse",
+				"txt/for accounting purposes/droq-invoices/sent 2018/000A - Dorset Park.txt"
+			],
+			[
+				"recipe",
+				"txt/numbers and figures/food recipes #1/Pastry Equipment.txt"
+			],
+			[
+				"playdate",
+				"txt/projects: DEADLINED/all done!/2018-01-20-Playdate Game Sketch.txt"
+			],
+			[
+				"how to",
+				"txt/memories/how to wake up your shelley.txt"
+			],
+			[
+				"how",
+				"txt/memories/how to wake up your shelley.txt"
+			],
+			[
+				"how ",
+				"txt/memories/how to wake up your shelley.txt"
+			],
+			[
+				"spar",
+				"txt/numbers and figures/SparkVPS Credentials & Upload Procedure.txt"
+			],
+			[
+				"chair",
+				"txt/fictions/001 chair roundtable.txt"
+			],
+			[
+				"weekl",
+				"txt/projects: DEADLINED/Each Week-Do work on Alientrap's Kalt concept.txt"
+			],
+			[
+				"jap",
+				"txt/projects: ACTIVE/Japan Trip Plans.txt"
+			],
+			[
+				"better mon",
+				"projects: ACTIVE/GAME - better mon companion game.txt"
+			],
+			[
+				"family",
+				"splatoon 2 online family codes.txt"
+			],
+			[
+				"zedd",
+				"🗑️/GAME-DESIGNING/-KINDEST-WORDS-/zeddy g.txt"
+			],
+			[
+				"size",
+				"projects: ACTIVE/ASSIST - Measure & Keep Shelley's sizes.txt"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 499.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"C:\\Users\\hi\\Repos\\bamboo-world\\bamboo-world-droqen.sublime-project"
+			]
+		],
+		"width": 378.0
+	},
+	"select_symbol":
+	{
+		"height": 83.0,
+		"last_filter": "ilerp",
+		"selected_items":
+		[
+			[
+				"ilerp",
+				"ilerp"
+			],
+			[
+				"iclerp",
+				"iclerp"
+			],
+			[
+				"",
+				"pqa"
+			],
+			[
+				"mid",
+				"mid"
+			],
+			[
+				"round",
+				"round"
+			],
+			[
+				"lerp",
+				"lerp"
+			],
+			[
+				"sgn",
+				"sgn"
+			],
+			[
+				"wrap",
+				"wrap"
+			]
+		],
+		"width": 592.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 495.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

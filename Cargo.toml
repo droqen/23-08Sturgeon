@@ -1,0 +1,5 @@
+[workspace]
+
+members = [
+    "w00_fish",
+]
