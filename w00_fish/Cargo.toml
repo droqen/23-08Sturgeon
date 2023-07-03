@@ -7,6 +7,8 @@ version = "0.0.1"
 
 [dependencies]
 ambient_api = { git = "https://github.com/AmbientRun/Ambient.git", rev = "b429d0b3" }
+regex = "1"
+glam = "0.24.1"
 
 [[bin]]
 name = "client_w_00_fish"
