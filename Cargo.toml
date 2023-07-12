@@ -1,5 +1,8 @@
 [workspace]
 
 members = [
+    "c00_neopets",
+    
     "w00_fish",
+    "w01_modmoba",
 ]
