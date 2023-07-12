@@ -1,0 +1,2 @@
+[messages.mouse_click.fields]
+screen_position = { type = "Vec2" }
