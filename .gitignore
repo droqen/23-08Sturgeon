@@ -1,1 +1,5 @@
 ﻿target
+tmp
+*.sublime-project
+*.sublime-workspace
+Cargo.lock
