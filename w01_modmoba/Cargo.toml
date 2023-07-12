@@ -9,30 +9,30 @@ version = "0.0.1"
 ambient_api = { git = "https://github.com/AmbientRun/Ambient.git", rev = "c2ed4913" }
 
 [[bin]]
-name = "server_scene"
-path = "src/scene/server.rs"
+name = "scene_serv"
+path = "src/scene/scene_serv.rs"
 required-features = ["server"]
 [[bin]]
-name = "client_scene"
-path = "src/scene/client.rs"
+name = "scene_cli"
+path = "src/scene/scene_cli.rs"
 required-features = ["client"]
 
 [[bin]]
-name = "client_unit"
-path = "src/unit/client.rs"
+name = "unit_cli"
+path = "src/unit/unit_cli.rs"
 required-features = ["client"]
 [[bin]]
-name = "server_unit"
-path = "src/unit/server.rs"
+name = "unit_serv"
+path = "src/unit/unit_serv.rs"
 required-features = ["server"]
 
 [[bin]]
-name = "server_pinput"
-path = "src/pinput/server.rs"
+name = "pinput_serv"
+path = "src/pinput/pinput_serv.rs"
 required-features = ["server"]
 [[bin]]
-name = "client_pinput"
-path = "src/pinput/client.rs"
+name = "pinput_cli"
+path = "src/pinput/pinput_cli.rs"
 required-features = ["client"]
 
 [features]
