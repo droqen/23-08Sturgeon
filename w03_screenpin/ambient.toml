@@ -1,0 +1,12 @@
+[ember]
+id = "w_03_screenpin"
+name = "w03_screenpin"
+version = "0.0.1"
+description = "Interprets screen-mouse inputs as either clicks or drags."
+
+
+# output only
+[messages.mouse_click.fields]
+screen_position = { type = "Vec2" }
+[messages.mouse_dragging.fields]
+drag_delta = { type = "Vec2" }

@@ -1,0 +1,22 @@
+[package]
+name = "w_03_screenpin"
+
+edition = "2021"
+publish = false
+version = "0.0.1"
+
+[dependencies]
+ambient_api = { git = "https://github.com/AmbientRun/Ambient.git", rev = "c2ed4913" }
+
+[[bin]]
+name = "client_w_03_screenpin"
+path = "src/client.rs"
+required-features = ["client"]
+[[bin]]
+name = "server_w_03_screenpin"
+path = "src/server.rs"
+required-features = ["server"]
+
+[features]
+client = ["ambient_api/client"]
+server = ["ambient_api/server"]
