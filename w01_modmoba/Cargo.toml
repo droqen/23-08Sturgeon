@@ -9,6 +9,15 @@ version = "0.0.1"
 ambient_api = { git = "https://github.com/AmbientRun/Ambient.git", rev = "c2ed4913" }
 
 [[bin]]
+name = "client_ui"
+path = "src/amoba_ui/client.rs"
+required-features = ["client"]
+[[bin]]
+name = "server_ui"
+path = "src/amoba_ui/server.rs"
+required-features = ["server"]
+
+[[bin]]
 name = "scene_serv"
 path = "src/scene/scene_serv.rs"
 required-features = ["server"]

@@ -1,4 +1,11 @@
 [ember]
 id = "w_01_modmoba"
-name = "w01_modmoba"
+name = "modmoba"
 version = "0.0.1"
+
+includes = [
+    "src/pinput/ambient.toml",
+    "src/scene/ambient.toml",
+    "src/unit/ambient.toml",
+    "src/amoba_ui/ambient.toml",
+]
