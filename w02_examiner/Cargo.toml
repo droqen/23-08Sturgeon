@@ -1,0 +1,39 @@
+[package]
+name = "w_02_examiner"
+
+edition = "2021"
+publish = false
+version = "0.0.1"
+
+[dependencies]
+ambient_api = { git = "https://github.com/AmbientRun/Ambient.git", rev = "c2ed4913" }
+
+[[bin]]
+name = "w02_client"
+path = "src/client.rs"
+required-features = ["client"]
+[[bin]]
+name = "w02_server"
+path = "src/server.rs"
+required-features = ["server"]
+
+[[bin]]
+name = "screen_dragger_pin_client"
+path = "../w03_screenpin/src/client.rs"
+required-features = ["client"]
+[[bin]]
+name = "screen_dragger_pin_server"
+path = "../w03_screenpin/src/server.rs"
+required-features = ["server"]
+[[bin]]
+name = "jewel_client"
+path = "../w04_jewelrotator/src/client.rs"
+required-features = ["client"]
+[[bin]]
+name = "jewel_server"
+path = "../w04_jewelrotator/src/server.rs"
+required-features = ["server"]
+
+[features]
+client = ["ambient_api/client"]
+server = ["ambient_api/server"]

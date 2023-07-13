@@ -3,4 +3,7 @@
 members = [
     "w00_fish",
     "w01_modmoba",
+    "w02_examiner",
+    "w03_screenpin",
+    "w04_jewelrotator",
 ]

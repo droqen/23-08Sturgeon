@@ -1,0 +1,9 @@
+[ember]
+id = "w_02_examiner"
+name = "w02_examiner"
+version = "0.0.1"
+
+includes = [
+    "../w03_screenpin/ambient.toml",
+    "../w04_jewelrotator/ambient.toml",
+]
