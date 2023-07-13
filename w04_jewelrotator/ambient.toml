@@ -1,0 +1,15 @@
+[ember]
+id = "w_04_jewelrotator"
+name = "w04_jewelrotator"
+version = "0.0.1"
+
+# input only. for controlling rotation cam
+[messages.set_yaw_velocity.fields]
+yaw_velocity = { type = "F32" }
+
+[components]
+focam_camera = { type = "EntityId" }
+focam_dist = { type = "F32" }
+focam_pitch = { type = "F32" }
+focam_yaw = { type = "F32" }
+focam_yaw_velocity = { type = "F32" }

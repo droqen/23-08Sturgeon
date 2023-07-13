@@ -1,0 +1,23 @@
+[package]
+name = "w_04_jewelrotator"
+
+edition = "2021"
+publish = false
+version = "0.0.1"
+
+[dependencies]
+ambient_api = { git = "https://github.com/AmbientRun/Ambient.git", rev = "c2ed4913" }
+
+[[bin]]
+name = "client_w_04_jewelrotator"
+path = "src/client.rs"
+required-features = ["client"]
+
+[[bin]]
+name = "server_w_04_jewelrotator"
+path = "src/server.rs"
+required-features = ["server"]
+
+[features]
+client = ["ambient_api/client"]
+server = ["ambient_api/server"]
