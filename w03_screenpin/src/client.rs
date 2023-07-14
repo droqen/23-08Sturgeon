@@ -5,6 +5,11 @@ pub fn main() {
 	let mut prev_position = vec2(0., 0.);
 	ambient_api::messages::Frame::subscribe(move |_|{
 		let (delta,input) = input::get_delta();
+        if delta.mouse_buttons.contains(&MouseButton::Left) {
+        	lmb_click_buffer = 30;
+        	lmb_click_position = input.mouse_position;
+        	prev_position = input.mouse_position;
+        }
 		if input.mouse_buttons.contains(&MouseButton::Left) {
 			// if delta.mouse_position != input.mouse_position - prev_position {
 			// 	println!("Mismatch! delta: {}, but mouse: {}", delta.mouse_position, input.mouse_position - prev_position);
@@ -17,11 +22,6 @@ pub fn main() {
 				lmb_click_buffer = 0;
 			}
 		}
-        if delta.mouse_buttons.contains(&MouseButton::Left) {
-        	lmb_click_buffer = 30;
-        	lmb_click_position = input.mouse_position;
-        	prev_position = input.mouse_position;
-        }
         if lmb_click_buffer > 0 { lmb_click_buffer -= 1; }
         if delta.mouse_buttons_released.contains(&MouseButton::Left) {
         	if lmb_click_buffer > 0 {
