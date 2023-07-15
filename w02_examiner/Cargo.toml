@@ -25,6 +25,7 @@ required-features = ["client"]
 name = "screen_dragger_pin_server"
 path = "../w03_screenpin/src/server.rs"
 required-features = ["server"]
+
 [[bin]]
 name = "jewel_client"
 path = "../w04_jewelrotator/src/client.rs"
