@@ -10,7 +10,7 @@ clear = { type = "Bool" }
 focus_target = { type = "EntityId" }
 
 [components]
-focuser = { type = "None" }
+focuser = { type = "Bool" }
 focuser_focus_target = { type = "EntityId" } # add/remove as necessary.
-is_focusable = { type = "None" } # unused?
+is_focusable = { type = "Bool" } # unused?
 is_focused = { type = "Bool" }
