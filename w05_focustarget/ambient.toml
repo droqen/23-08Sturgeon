@@ -1,0 +1,16 @@
+[ember]
+id = "w_05_focustarget"
+name = "w05_focustarget"
+version = "0.0.1"
+
+# input messages
+[messages.clear_focus_target]
+clear = { type = "Bool" }
+[messages.set_focus_target.fields]
+focus_target = { type = "EntityId" }
+
+[components]
+focuser = { type = "None" }
+focuser_focus_target = { type = "EntityId" } # add/remove as necessary.
+is_focusable = { type = "None" } # unused?
+is_focused = { type = "Bool" }
