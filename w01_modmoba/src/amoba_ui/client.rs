@@ -49,6 +49,7 @@ pub fn main() {
     });
 }
 
+#[allow(non_snake_case)]
 #[element_component]
 fn App(hooks: &mut Hooks) -> Element {
     let (screen, set_screen) = hooks.use_state(None);
@@ -115,6 +116,7 @@ fn App(hooks: &mut Hooks) -> Element {
     }
 }
 
+#[allow(non_snake_case)]
 #[element_component]
 fn TeamMars(
     hooks: &mut Hooks,
@@ -140,6 +142,7 @@ fn TeamMars(
     ])
 }
 
+#[allow(non_snake_case)]
 #[element_component]
 fn TeamJupiter(
     hooks: &mut Hooks,
