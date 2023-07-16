@@ -17,7 +17,8 @@ pub fn main() {
 
     subscribe_focus_target_changers();
 
-    let (focam_cament, focam_focus) = spawn_focam_parts();
+    let (focam_cament, focam_focus) =
+    spawn_focam_parts();
 
     query((translation(), focam_camera(), focam_dist(), focam_pitch(), focam_yaw(), focam_yaw_velocity(),)).each_frame(|focams|{
         for (focam, (focus_pos, cam, dist, pitch, yaw, yawvel)) in focams {
@@ -42,38 +43,8 @@ pub fn main() {
         entity::set_component(focam_focus, focam_yaw_velocity(), msg.yaw_velocity);
     });
 
-    debug_foci();
-}
+    setup_example_focus_switching();
 
-fn debug_foci() {
-    let one_ring_model = Entity::new()
-        .with_merge(make_transformable())
-        .with(prefab_from_url(), asset::url("assets/one_ring.glb").unwrap())
-        .with(rotation(), Quat::from_rotation_y(0.5))
-        // .with_default(quad())
-        .with_default(is_focusable())
-        .with(translation(), vec3(20., 0., 0.))
-        .spawn();
-
-    let other_ring_model = Entity::new()
-        .with_merge(make_transformable())
-        .with(prefab_from_url(), asset::url("assets/one_ring.glb").unwrap())
-        .with(rotation(), Quat::from_rotation_y(0.5))
-        // .with_default(quad())
-        .with_default(is_focusable())
-        .with(translation(), vec3(200., 0., 0.))
-        .spawn();
-    
-    let mut time = 0;
-
-    ambient_api::messages::Frame::subscribe(move |_|{
-        match time%100 {
-            0 => messages::SetFocusTarget{focus_target: one_ring_model}.send_local_broadcast(true),
-            50 => messages::SetFocusTarget{focus_target: other_ring_model}.send_local_broadcast(true),
-            _ => {},
-        };
-        time += 1;
-    });
 }
 
 fn subscribe_focus_target_changers() {
@@ -119,3 +90,33 @@ fn spawn_focam_parts() -> (EntityId, EntityId) {
     return (focam_cament, focam_focus);
 }
 
+fn setup_example_focus_switching() {
+    let one_ring_model = Entity::new()
+        .with_merge(make_transformable())
+        .with(prefab_from_url(), asset::url("assets/one_ring.glb").unwrap())
+        .with(rotation(), Quat::from_rotation_y(0.5))
+        // .with_default(quad())
+        .with_default(is_focusable())
+        .with(translation(), vec3(20., 0., 0.))
+        .spawn();
+
+    let other_ring_model = Entity::new()
+        .with_merge(make_transformable())
+        .with(prefab_from_url(), asset::url("assets/one_ring.glb").unwrap())
+        .with(rotation(), Quat::from_rotation_y(0.5))
+        // .with_default(quad())
+        .with_default(is_focusable())
+        .with(translation(), vec3(200., 0., 0.))
+        .spawn();
+    
+    let mut time = 0;
+
+    ambient_api::messages::Frame::subscribe(move |_|{
+        match time%100 {
+            0 => messages::SetFocusTarget{focus_target: one_ring_model}.send_local_broadcast(true),
+            50 => messages::SetFocusTarget{focus_target: other_ring_model}.send_local_broadcast(true),
+            _ => {},
+        };
+        time += 1;
+    });
+}
