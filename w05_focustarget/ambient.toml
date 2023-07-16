@@ -4,7 +4,7 @@ name = "w05_focustarget"
 version = "0.0.1"
 
 # input messages
-[messages.clear_focus_target]
+[messages.clear_focus_target.fields]
 clear = { type = "Bool" }
 [messages.set_focus_target.fields]
 focus_target = { type = "EntityId" }
