@@ -3,3 +3,4 @@ tmp
 *.sublime-project
 *.sublime-workspace
 Cargo.lock
+*.code-workspace
