@@ -1,0 +1,19 @@
+[ember]
+id = "w_07_ui_healthbar"
+name = "w07_ui_healthbar"
+version = "0.0.1"
+
+# [messages.input.fields]
+# ray_origin = { type = "Vec3" }
+# ray_dir = { type = "Vec3" }
+
+# s-c
+
+# [messages.hover_data.fields]
+# position = { type = "Vec3" }
+# hovered_ent = { type = "EntityId" }
+
+[components]
+uiable_health = { type = "I32", attributes = ["Networked"] }
+uiable_health_max = { type = "I32", attributes = ["Networked"] }
+ui_guy_move_target = { type = "Vec3" }
