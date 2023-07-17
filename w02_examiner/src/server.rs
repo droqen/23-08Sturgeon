@@ -21,6 +21,7 @@ fn so_like_dragging_rotates_focam() {
     messages::MouseDragging::subscribe(|_src, msg|{
         messages::SetYawVelocity{yaw_velocity: msg.drag_delta.x * 0.01}.send_local_broadcast(false);
     });
+}
 
 fn so_like_focam_angular_velocity_drags_to_0() {
     query(focam_yaw_velocity()).each_frame(|focams|{
