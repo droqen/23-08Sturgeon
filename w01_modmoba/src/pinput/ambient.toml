@@ -1,7 +1,0 @@
-[ember]
-id = "pinput"
-version = "1"
-description = "Receives messages from amoba_ui"
-
-[messages.mouse_click.fields]
-screen_position = { type = "Vec2" }
