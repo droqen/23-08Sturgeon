@@ -1,0 +1,22 @@
+[ember]
+id = "w_06_ui_reader"
+name = "w06_ui_reader"
+version = "0.0.1"
+
+[messages.input.fields]
+ray_origin = { type = "Vec3" }
+ray_dir = { type = "Vec3" }
+
+# s-c
+
+# [messages.hover_data.fields]
+# position = { type = "Vec3" }
+# hovered_ent = { type = "EntityId" }
+
+[components]
+player_has_hover_target = { type = "Bool", attributes = ["Networked"] }
+player_hover_target = { type = "EntityId", attributes = ["Networked"] }
+player_hover_target_pos = { type = "Vec3", attributes = ["Networked"] }
+player_hover_target_name = { type = "String", attributes = ["Networked"] }
+
+hoverable_name = { type = "String", attributes = ["Networked"] }
