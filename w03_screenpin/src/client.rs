@@ -3,6 +3,7 @@ pub fn main() {
 	let mut lmb_click_buffer = 0;
 	let mut lmb_click_position = vec2(0., 0.);
 	let mut prev_position = vec2(0., 0.);
+	let main_camera_query = query(screenpin_camera()).build();
 	ambient_api::messages::Frame::subscribe(move |_|{
 		let (delta,input) = input::get_delta();
         if delta.mouse_buttons.contains(&MouseButton::Left) {
@@ -25,7 +26,18 @@ pub fn main() {
         if lmb_click_buffer > 0 { lmb_click_buffer -= 1; }
         if delta.mouse_buttons_released.contains(&MouseButton::Left) {
         	if lmb_click_buffer > 0 {
-        		messages::MouseClick{screen_position: lmb_click_position}.send_server_reliable();
+				let cameras = main_camera_query.evaluate();
+				if cameras.len() > 0 {
+					let (camera,_) = cameras[0];
+					let ray = camera::screen_position_to_world_ray(camera, lmb_click_position);
+					messages::MouseClick{
+						screen_position: lmb_click_position,
+						world_ray_origin: ray.origin,
+						world_ray_dir: ray.dir,
+					}.send_server_reliable();
+				} else {
+					println!("screenpin err - no screenpin_camera component found!");
+				}
         	}
         }
 	});
@@ -39,3 +51,5 @@ use ambient_api::{
 
     // concepts::{make_transformable},
 };
+
+use components::{screenpin_camera,};

@@ -20,7 +20,7 @@ pub fn main() {
 
     so_like_focam_has_velocity_and_rotation();
     so_like_focuser_lerps_to_focus_target();
-    // so_like_focus_alternates_between_two_rings_in_space();
+    so_like_focus_alternates_between_two_rings_in_space();
     so_like_input_messages_change_focuser_focus_target();
 
     messages::SetYawVelocity::subscribe(move |_src, msg|{
@@ -83,7 +83,7 @@ fn spawn_focam_parts() -> (EntityId, EntityId) {
 
     let focam_focus = Entity::new()
         .with_merge(make_transformable())
-        .with_default(focuser())
+        .with(focuser(), ())
         .with(translation(), vec3(0., 0., 2.)) // +z = move camera up
         .with(focam_camera(), focam_cament)
         .with(focam_dist(), 30.)

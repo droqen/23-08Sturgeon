@@ -8,5 +8,10 @@ description = "Interprets screen-mouse inputs as either clicks or drags."
 # output only
 [messages.mouse_click.fields]
 screen_position = { type = "Vec2" }
+world_ray_origin = { type = "Vec3"}
+world_ray_dir = { type = "Vec3"}
 [messages.mouse_dragging.fields]
 drag_delta = { type = "Vec2" }
+
+[components]
+screenpin_camera = { type = "Empty" }

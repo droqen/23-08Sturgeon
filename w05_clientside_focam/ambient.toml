@@ -1,0 +1,17 @@
+[ember]
+id = "w_05_clientside_focam"
+name = "w05_clientside_focam"
+version = "0.0.1"
+
+[messages.mouse_dragging.fields]
+drag_delta = { type = "Vec2" }
+
+[messages.mouse_click.fields]
+screen_position = { type = "Vec2" }
+ray_origin = { type = "Vec3" }
+ray_dir = { type = "Vec3" }
+
+[components]
+focam_yaw = { type = "F32" }
+focam_yaw_velocity = { type = "F32" }
+focam_pitch = { type = "F32" }
