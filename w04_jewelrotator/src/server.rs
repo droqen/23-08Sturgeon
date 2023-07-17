@@ -15,11 +15,21 @@ use components::{ focam_camera, focam_dist, focam_pitch, focam_yaw, focam_yaw_ve
 #[main]
 pub fn main() {
 
-    subscribe_focus_target_changers();
-
     let (focam_cament, focam_focus) =
     spawn_focam_parts();
 
+    focam_has_velocity_and_rotation();
+    focuser_lerps_to_focus_target();
+    // focus_alternates_between_two_rings_in_space();
+    input_messages_change_focuser_focus_target();
+
+    messages::SetYawVelocity::subscribe(move |_src, msg|{
+        entity::set_component(focam_focus, focam_yaw_velocity(), msg.yaw_velocity);
+    });
+
+}
+
+fn focam_has_velocity_and_rotation() {
     query((translation(), focam_camera(), focam_dist(), focam_pitch(), focam_yaw(), focam_yaw_velocity(),)).each_frame(|focams|{
         for (focam, (focus_pos, cam, dist, pitch, yaw, yawvel)) in focams {
             let cam_dir = Quat::from_rotation_z(yaw) * Quat::from_rotation_x(pitch) * vec3(0., dist, 0.);
@@ -28,7 +38,9 @@ pub fn main() {
             entity::set_component(cam, lookat_target(), focus_pos);
         }
     });
+}
 
+fn focuser_lerps_to_focus_target() {
     query((focuser_focus_target(), translation())).each_frame(|focusers|{
         for (focuser, (focus_target_ent, current_pos)) in focusers {
             if let Some(focus_target_pos) = entity::get_component(focus_target_ent, translation()) {
@@ -38,16 +50,9 @@ pub fn main() {
             }
         }
     });
-
-    messages::SetYawVelocity::subscribe(move |_src, msg|{
-        entity::set_component(focam_focus, focam_yaw_velocity(), msg.yaw_velocity);
-    });
-
-    setup_example_focus_switching();
-
 }
 
-fn subscribe_focus_target_changers() {
+fn input_messages_change_focuser_focus_target() {
     let get_focuser = query(focuser()).build();
     messages::ClearFocusTarget::subscribe(move |_src,msg|{
         let focs = get_focuser.evaluate();
@@ -87,10 +92,10 @@ fn spawn_focam_parts() -> (EntityId, EntityId) {
         .with(focam_yaw_velocity(), 0.01)
         .spawn();
 
-    return (focam_cament, focam_focus);
+    (focam_cament, focam_focus)
 }
 
-fn setup_example_focus_switching() {
+fn focus_alternates_between_two_rings_in_space() {
     let one_ring_model = Entity::new()
         .with_merge(make_transformable())
         .with(prefab_from_url(), asset::url("assets/one_ring.glb").unwrap())
