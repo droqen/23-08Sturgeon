@@ -16,6 +16,14 @@ pub fn get_pin_mouse_uv0() -> Vec2 {
     } else { vec2(0.,0.) }
 }
 
-pub fn get_pin_mouse_ray() -> Ray {
-    Ray{origin:vec3(0., 0., 0.), dir:vec3(1., 0., 0.)}
+pub fn get_pin_mouse_down() -> bool {
+    let input = input::get();
+    return input.mouse_buttons.contains(&MouseButton::Left);
+}
+
+pub fn get_pin_mouse_ray(camera_ent : EntityId) -> Ray {
+    let input = input::get();
+    let lmb_click_position = input.mouse_position;
+    camera::screen_position_to_world_ray(camera_ent, lmb_click_position)
+    // Ray{origin:vec3(0., 0., 0.), dir:vec3(1., 0., 0.)}
 }

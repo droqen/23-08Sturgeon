@@ -6,14 +6,22 @@ version = "0.0.1"
 [messages.mouse_u_v_zero.fields]
 uvzero = { type = "Vec2" }
 
+[messages.mouse_down.fields]
+mouse_ray_origin = { type = "Vec3" }
+mouse_ray_dir = { type = "Vec3" }
+
 [components]
 plr_glider = { type = "EntityId" }
-plr_glidercam = { type = "EntityId" }
+plr_glidercam = { type = "EntityId", attributes = ["Networked", "Debuggable"] }
 is_glider = { type = "Empty" }
 is_glidercam = { type = "Empty" }
 is_local_player_camera = { type = "Empty" }
 
 glider_landvel = { type = "Vec2" }
+# glider_hook_model = { type = "EntityId" }
+glider_hook_pos = { type = "Vec3", attributes = ["Networked"] }
+
+is_hook_model = { type = "Empty" }
 
 selfie_stick = { type = "Vec3" }
 selfie_focus_ent = { type = "EntityId" }

@@ -13,35 +13,30 @@ use components::is_glider;
 use components::is_local_player_camera;
 
 mod c_pinutils;
+mod c_hookmodel;
+mod c_findmycam;
 
 const GLIDER_CAMERA_OFFSET : Vec3 = vec3(5., 5., 5.);
 
 #[main]
 pub fn main() {
-    let local_uid =
-        entity::get_component(entity::resources(), local_user_id()).unwrap();
+    // let local_uid =
+    //     entity::get_component(entity::resources(), local_user_id()).unwrap();
 
-    ambient_api::messages::Frame::subscribe(|_|{
+    let findmycam_query = crate::c_findmycam::build_query();
+
+    ambient_api::messages::Frame::subscribe(move |_|{
         let mouse_uv0: Vec2 = crate::c_pinutils::get_pin_mouse_uv0();
-        let mouse_ray: Ray = crate::c_pinutils::get_pin_mouse_ray();
+        let mouse_down: bool = crate::c_pinutils::get_pin_mouse_down();
+        if mouse_down {
+            if let Some(my_cam) = crate::c_findmycam::try_find_my_cam(findmycam_query) {
+                let mouse_ray: Ray = crate::c_pinutils::get_pin_mouse_ray(my_cam);
+                messages::MouseDown{ mouse_ray_origin: mouse_ray.origin, mouse_ray_dir: mouse_ray.dir }.send_server_unreliable();
+            } else {
+                println!("No my_cam found!");
+            }
+        }
         messages::MouseUVZero{ uvzero: mouse_uv0 }.send_server_unreliable();
     });
-
-    // spawn_query((is_glider(),translation(),user_id())).bind(move |gliders|{
-    //     for (glider,(_,pos,uid)) in gliders {
-    //         println!("{}, {}", &uid, &local_uid);
-    //         if &uid == &local_uid {
-    //             // create a local camera for this glider!
-    //             let cament : EntityId = Entity::new()
-    //                 .with_merge(make_perspective_infinite_reverse_camera())
-    //                 .with(aspect_ratio_from_window(), EntityId::resources())
-    //                 .with(main_scene(), ())
-    //                 .with(translation(), pos + GLIDER_CAMERA_OFFSET)
-    //                 .with(lookat_target(), pos)
-    //                 .with(is_local_player_camera(), ())
-    //                 .spawn();
-    //         }
-    //     }
-    // });
 
 }

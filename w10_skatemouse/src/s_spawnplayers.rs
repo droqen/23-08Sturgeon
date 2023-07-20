@@ -42,7 +42,7 @@ pub fn setup() {
                 .with_merge(make_perspective_infinite_reverse_camera())
                 .with(aspect_ratio_from_window(), entity::resources())
                 .with(is_glidercam(), ())
-                .with(selfie_stick(), vec3(0., 5., 5.))
+                .with(selfie_stick(), vec3(0., 10., 15.))
                 .with(selfie_focus_ent(), glider.clone())
                 .with(selfie_pitch(), 0.)
                 .with(selfie_yaw(), 0.)
