@@ -4,7 +4,7 @@ use ambient_api::{
         camera::aspect_ratio_from_window,
         player::{player,user_id},
         primitives::{cube,quad},
-        physics::{plane_collider},
+        physics::plane_collider,
         transform::{lookat_target, translation},
     },
     concepts::{make_perspective_infinite_reverse_camera, make_transformable},
@@ -33,9 +33,16 @@ pub fn main() {
         entity::set_component(glidercam, selfie_pitch(), msg.uvzero.y * 0.1);
     });
 
-    Entity::new()
+    let tempquad = Entity::new()
         .with_merge(make_transformable())
         .with(quad(), ())
         .with(plane_collider(), ())
         .spawn();
+
+    messages::MouseDown::subscribe(move |_,msg|{
+        if let Some(hit) = physics::raycast_first(msg.mouse_ray_origin, msg.mouse_ray_dir) {
+            entity::set_component(tempquad, translation(), hit.position);
+            // hit.distance, hit.entity
+        }
+    });
 }
