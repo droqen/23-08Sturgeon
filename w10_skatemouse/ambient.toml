@@ -1,0 +1,32 @@
+[ember]
+id = "w_10_skatemouse"
+name = "w10_skatemouse"
+version = "0.0.1"
+
+[messages.mouse_u_v_zero.fields]
+uvzero = { type = "Vec2" }
+
+[components]
+plr_glider = { type = "EntityId" }
+plr_glidercam = { type = "EntityId" }
+is_glider = { type = "Empty" }
+is_glidercam = { type = "Empty" }
+is_local_player_camera = { type = "Empty" }
+
+glider_landvel = { type = "Vec2" }
+
+selfie_stick = { type = "Vec3" }
+selfie_focus_ent = { type = "EntityId" }
+selfie_pitch = { type = "F32" }
+selfie_yaw = { type = "F32" }
+
+# player_tracked = { type = "Empty" }
+# player_glider = { type = "Empty" }
+# glider_vel2 = { type = "Vec2" }
+# glider_target = { type = "EntityId" }
+
+# [messages.player_input.fields]
+# screen_uv = { type = "Vec2" }
+# ray_origin = { type = "Vec3" }
+# ray_dir = { type = "Vec3" }
+# lmb_held = { type = "Bool" }

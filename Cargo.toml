@@ -8,4 +8,7 @@ members = [
     "w05_clientside_focam",
     "w06_ui_reader",
     "w07_ui_healthbar",
+    "w08_impulse_player",
+    "w09_player_focam",
+    "w10_skatemouse",
 ]
