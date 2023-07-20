@@ -1,7 +1,5 @@
 use ambient_api::{
-    components::core::{
-        transform::translation,
-    },
+    components::core::transform::translation,
     prelude::*,
 };
 

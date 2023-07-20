@@ -12,7 +12,7 @@ use ambient_api::{
 
 use crate::components::{is_glider,is_glidercam};
 use crate::components::{plr_glider,plr_glidercam};
-use crate::components::{glider_landvel};
+use crate::components::glider_landvel;
 use crate::components::{selfie_stick, selfie_focus_ent, selfie_pitch, selfie_yaw};
 
 pub fn setup() {
