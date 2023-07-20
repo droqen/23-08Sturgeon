@@ -29,8 +29,8 @@ pub fn main() {
     messages::MouseUVZero::subscribe(|src,msg|{
         let plr = src.client_entity_id().expect("Player has no entity");
         let glidercam = entity::get_component(plr, plr_glidercam()).expect("Player has no glidercam");
-        entity::set_component(glidercam, selfie_yaw(), msg.uvzero.x * 0.1);
-        entity::set_component(glidercam, selfie_pitch(), msg.uvzero.y * 0.1);
+        entity::mutate_component(glidercam, selfie_yaw(), |yaw|*yaw=*yaw*0.5+0.5*msg.uvzero.x * 0.1);
+        entity::mutate_component(glidercam, selfie_pitch(), |pitch|*pitch=*pitch*0.5+0.5*msg.uvzero.y * 0.1);
     });
 
     let tempquad = Entity::new()
