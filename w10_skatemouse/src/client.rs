@@ -39,4 +39,6 @@ pub fn main() {
         messages::MouseUVZero{ uvzero: mouse_uv0 }.send_server_unreliable();
     });
 
+    crate::c_hookmodel::setup_hook_model();
+
 }

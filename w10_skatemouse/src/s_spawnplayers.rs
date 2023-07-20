@@ -1,6 +1,6 @@
 use ambient_api::{
     components::core::{
-        app::main_scene,
+        app::{main_scene,name,},
         camera::aspect_ratio_from_window,
         player::{player,user_id},
         primitives::{cube,quad},
@@ -10,9 +10,9 @@ use ambient_api::{
     prelude::*, entity::spawn,
 };
 
-use crate::components::{is_glider,is_glidercam};
-use crate::components::{plr_glider,plr_glidercam};
-use crate::components::glider_landvel;
+use crate::components::{is_glider, is_glidercam};
+use crate::components::{plr_glider, plr_glidercam};
+use crate::components::{glider_landvel, glider_hook_pos};
 use crate::components::{selfie_stick, selfie_focus_ent, selfie_pitch, selfie_yaw};
 
 pub fn setup() {
@@ -28,8 +28,10 @@ pub fn setup() {
 
             let glider = Entity::new()
                 .with_merge(make_transformable())
+                .with(name(), "Hook pos".to_string())
                 .with(is_glider(), ())
                 .with(glider_landvel(), vec2(0., -1.))
+                .with(glider_hook_pos(), gliderpos)
                 .with(user_id(), uid.clone())
                 .with(cube(), ())
                 .with(translation(), gliderpos)

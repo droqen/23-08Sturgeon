@@ -22,6 +22,8 @@ glider_landvel = { type = "Vec2" }
 glider_hook_pos = { type = "Vec3", attributes = ["Networked"] }
 
 is_hook_model = { type = "Empty" }
+hook_model_pos = { type = "Vec3" }
+hook_model_recency = { type = "F32" }
 
 selfie_stick = { type = "Vec3" }
 selfie_focus_ent = { type = "EntityId" }
