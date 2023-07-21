@@ -14,12 +14,15 @@ pub fn setup() {
                 desired_landvel = Vec2::ZERO;
             } else {
                 // let desired_landvel = to_hookpos.xy().normalize();
-                desired_landvel = to_hookpos.xy().clamp_length(0.1, 5.0) * 2.;
+                desired_landvel = to_hookpos.xy().clamp_length(0.1, 5.0) * 1.7;
             }
-            let accellin = 0.01;
-            let accellerp = 0.1;
+            let accellin = 1.0 * delta_time();
+            let accellerp = 0.05;
+            let friction = 0.01;
             entity::mutate_component(glider, glider_landvel(), move |landvel|{
-                *landvel = (1.-accellerp) * (*landvel) + (desired_landvel) * (accellerp);
+                *landvel *= (1.-friction);
+                let to_desired_landvel : Vec2 = desired_landvel - *landvel;
+                *landvel += to_desired_landvel.clamp_length_max(accellin) + to_desired_landvel * accellerp;
             });
         }
     });
