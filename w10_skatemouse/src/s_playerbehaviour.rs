@@ -8,8 +8,15 @@ use crate::components::{is_glider, glider_landvel, glider_hook_pos};
 pub fn setup() {
     query((translation(), glider_landvel(), glider_hook_pos())).each_frame(|gliders|{
         for (glider,(gliderpos,landvel,hookpos)) in gliders {
-            let to_hookpos = hookpos - gliderpos;
-            let desired_landvel = to_hookpos.xy().normalize();
+            let to_hookpos : Vec3 = hookpos - gliderpos;
+            let desired_landvel : Vec2;
+            if to_hookpos.length_squared() < 0.001 {
+                desired_landvel = Vec2::ZERO;
+            } else {
+                // let desired_landvel = to_hookpos.xy().normalize();
+                desired_landvel = to_hookpos.xy().clamp_length(0.1, 5.0) * 2.;
+            }
+            let accellin = 0.01;
             let accellerp = 0.1;
             entity::mutate_component(glider, glider_landvel(), move |landvel|{
                 *landvel = (1.-accellerp) * (*landvel) + (desired_landvel) * (accellerp);
