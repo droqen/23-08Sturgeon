@@ -10,8 +10,8 @@ mod s_mkworld;
 pub fn main() {
 
     crate::s_selfie::setup();
-    crate::s_spawnplayers::setup();
     crate::s_playerbehaviour::setup();
+    crate::s_spawnplayers::setup();
     crate::s_mousecontrol::setup_mouse_control();
     crate::s_mkworld::setup_world_entities();
 
