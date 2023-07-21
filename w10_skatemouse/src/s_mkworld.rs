@@ -1,14 +1,13 @@
 pub fn setup_world_entities() {
-    println!("Setup!");
+    let pillars = Entity::new().with(name(), "Pillars".to_string()).spawn();
     for i in 0..30 {
-        println!("Setup {i:?}");
         let x = ((random::<u32>() % 10) as i32 - 5) * 2;
         let y = ((random::<u32>() % 10) as i32 - 5) * 2;
-        spawn_pillar_at(
+        entity::add_child(pillars, spawn_pillar_at(
             ivec2(x,y).as_vec2().extend(0.0),
             1.,
             3. + 5. * random::<f32>()
-        );
+        ));
     }
 }
 
@@ -31,7 +30,7 @@ use ambient_api::prelude::*;
 use ambient_api::concepts::make_transformable;
 use ambient_api::components::core::{
     app::name,
-    transform::{translation,rotation,scale},
+    transform::{translation,scale},
     physics::cube_collider,
     primitives::cube,
 };
