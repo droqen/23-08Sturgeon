@@ -16,8 +16,9 @@ mod c_pinutils;
 mod c_hookmodel;
 mod c_findmycam;
 mod c_playeranim;
+mod c_debuglines;
 
-const GLIDER_CAMERA_OFFSET : Vec3 = vec3(5., 5., 5.);
+const GLIDER_CAMERA_OFFSET : Vec3 = vec3(5., 5., 5.); // unused
 
 #[main]
 pub fn main() {
@@ -39,6 +40,8 @@ pub fn main() {
         }
         messages::MouseUVZero{ uvzero: mouse_uv0 }.send_server_unreliable();
     });
+
+    crate::c_findmycam::my_cam_spawn_query(|cam|crate::c_debuglines::setup(cam));
 
     crate::c_hookmodel::setup_hook_model();
     crate::c_playeranim::setup();
