@@ -13,11 +13,11 @@ mouse_ray_dir = { type = "Vec3" }
 [components]
 plr_glider = { type = "EntityId" }
 plr_glidercam = { type = "EntityId", attributes = ["Networked", "Debuggable"] }
-is_glider = { type = "Empty" }
+is_glider = { type = "Empty", attributes = ["Networked", "Debuggable"] }
 is_glidercam = { type = "Empty" }
 is_local_player_camera = { type = "Empty" }
 
-glider_landvel = { type = "Vec2" }
+glider_landvel = { type = "Vec2", attributes = ["Networked"] }
 # glider_hook_model = { type = "EntityId" }
 glider_hook_pos = { type = "Vec3", attributes = ["Networked"] }
 
@@ -40,3 +40,9 @@ selfie_yaw = { type = "F32" }
 # ray_origin = { type = "Vec3" }
 # ray_dir = { type = "Vec3" }
 # lmb_held = { type = "Bool" }
+
+# clientside components?
+glider_animodel = { type = "EntityId" }
+animodel_lookdir = { type = "Vec3", attributes=["Debuggable"] }
+animodel_yaw = { type = "F32" }
+animodel_yawvel = { type = "F32" }
