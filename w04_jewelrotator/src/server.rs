@@ -71,7 +71,7 @@ fn so_like_input_messages_change_focuser_focus_target() {
         }
     });
 }
-    
+
 fn spawn_focam_parts() -> (EntityId, EntityId) {
     let focam_cament = Entity::new()
         .with_merge(make_perspective_infinite_reverse_camera())

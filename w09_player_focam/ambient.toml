@@ -1,0 +1,33 @@
+[ember]
+id = "w_09_player_focam"
+name = "w09_player_focam"
+version = "0.0.1"
+
+includes = [
+    "../w03_screenpin/ambient.toml",
+]
+
+# input only. for controlling rotation cam
+[messages.set_yaw_velocity.fields]
+yaw_velocity = { type = "F32" }
+
+# input messages
+[messages.clear_focus_target.fields]
+clear = { type = "Bool" }
+[messages.set_focus_target.fields]
+focus_target = { type = "EntityId" }
+
+[components]
+
+# camera
+focam_camera = { type = "EntityId" }
+focam_dist = { type = "F32" }
+focam_pitch = { type = "F32" }
+focam_yaw = { type = "F32" }
+focam_yaw_velocity = { type = "F32" }
+
+# focuser, focus target haver
+focuser = { type = "Empty" }
+focuser_focus_target = { type = "EntityId" } # add/remove as necessary.
+is_focusable = { type = "Bool" } # unused?
+is_focused = { type = "Bool" }

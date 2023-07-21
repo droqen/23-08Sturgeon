@@ -1,0 +1,8 @@
+[ember]
+id = "w_08_impulse_player"
+name = "w08_impulse_player"
+version = "0.0.1"
+
+includes = [
+    "../w03_screenpin/ambient.toml",
+]

@@ -1,0 +1,38 @@
+[package]
+name = "w_09_player_focam"
+
+edition = "2021"
+publish = false
+version = "0.0.1"
+
+[dependencies]
+ambient_api = { git = "https://github.com/AmbientRun/Ambient.git", rev = "8ce8718f74" }
+
+[[bin]]
+name = "setup_w_09_player_focam"
+path = "src/server_debug_setup.rs"
+required-features = ["server"]
+
+[[bin]]
+name = "client_w_09_player_focam"
+path = "src/client.rs"
+required-features = ["client"]
+
+[[bin]]
+name = "server_w_09_player_focam"
+path = "src/server.rs"
+required-features = ["server"]
+
+[[bin]]
+name = "client_screenpin"
+path = "../w03_screenpin/src/client.rs"
+required-features = ["client"]
+
+[[bin]]
+name = "server_screenpin"
+path = "../w03_screenpin/src/server.rs"
+required-features = ["server"]
+
+[features]
+client = ["ambient_api/client"]
+server = ["ambient_api/server"]
