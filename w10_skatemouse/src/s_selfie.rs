@@ -9,8 +9,8 @@ pub fn setup() {
                 target_ent,
                  translation()
             ).expect("Selfie stick focus ent does not have a 'translation' component");
-            entity::add_component(stick, translation(), target_pos + Quat::from_rotation_y(-yaw) * Quat::from_rotation_x(pitch) * offset);
-            entity::add_component(stick, lookat_target(), target_pos);
+            entity::set_component(stick, translation(), target_pos + Quat::from_rotation_y(-yaw) * Quat::from_rotation_x(pitch) * offset);
+            entity::set_component(stick, lookat_target(), target_pos);
         }
     });
 }
