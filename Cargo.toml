@@ -11,4 +11,6 @@ members = [
     "w08_impulse_player",
     "w09_player_focam",
     "w10_skatemouse",
+
+    "test11_clientside_spawn_query",
 ]
