@@ -10,7 +10,7 @@ pub fn setup() {
         for (glider,(gliderpos,landvel,hookpos)) in gliders {
             let to_hookpos : Vec3 = hookpos - gliderpos;
             let desired_landvel : Vec2;
-            if to_hookpos.length_squared() < 0.001 {
+            if to_hookpos.length_squared() < 0.01 {
                 desired_landvel = Vec2::ZERO;
             } else {
                 // let desired_landvel = to_hookpos.xy().normalize();
@@ -20,9 +20,13 @@ pub fn setup() {
             let accellerp = 0.05;
             let friction = 0.01;
             entity::mutate_component(glider, glider_landvel(), move |landvel|{
-                *landvel *= (1.-friction);
+                *landvel *= 1.-friction;
                 let to_desired_landvel : Vec2 = desired_landvel - *landvel;
-                *landvel += to_desired_landvel.clamp_length_max(accellin) + to_desired_landvel * accellerp;
+                if to_desired_landvel.length_squared() < accellin * accellin {
+                    *landvel = desired_landvel;
+                } else {
+                    *landvel += to_desired_landvel.clamp_length_max(accellin) + to_desired_landvel * accellerp;
+                }
             });
         }
     });
