@@ -40,16 +40,19 @@ pub fn setup() {
             entity::add_component(plr, plr_glider(), glider);
 
             let glidercam = Entity::new()
-                .with_merge(make_transformable())
+                .with(name(), "Glider Camera".to_string() )
                 .with_merge(make_perspective_infinite_reverse_camera())
+                // .with_merge(make_transformable())
+                .with(translation(), Vec3::splat(5.))
+                .with(lookat_target(), Vec3::splat(0.))
+                .with(main_scene(), ())
+                .with(user_id(), uid.clone())
                 .with(aspect_ratio_from_window(), entity::resources())
                 .with(is_glidercam(), ())
                 .with(selfie_stick(), vec3(0., 10., 15.))
                 .with(selfie_focus_ent(), glider.clone())
                 .with(selfie_pitch(), 0.)
                 .with(selfie_yaw(), 0.)
-                .with(user_id(), uid.clone())
-                .with(main_scene(), ())
                 .spawn();
 
             entity::add_component(plr, plr_glidercam(), glidercam);
