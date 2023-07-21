@@ -3,11 +3,11 @@ use ambient_api::{
         app::{main_scene,name,},
         camera::aspect_ratio_from_window,
         player::{player,user_id},
-        primitives::{cube,quad},
+        primitives::cube,
         transform::{lookat_target, translation},
     },
     concepts::{make_perspective_infinite_reverse_camera, make_transformable},
-    prelude::*, entity::spawn,
+    prelude::*,
 };
 
 use crate::components::{is_glider, is_glidercam};
@@ -33,7 +33,7 @@ pub fn setup() {
                 .with(glider_landvel(), vec2(0., -1.))
                 .with(glider_hook_pos(), gliderpos)
                 .with(user_id(), uid.clone())
-                .with(cube(), ())
+                // .with(cube(), ()) // hidden. see c_playeranim.
                 .with(translation(), gliderpos)
                 .spawn();
         
