@@ -1,0 +1,7 @@
+[ember]
+id = "w_12_tilting_turning"
+name = "w12_tilting_turning"
+version = "0.0.1"
+
+[components]
+line_vec = { type = "Vec3", attributes = ["Networked"] }
