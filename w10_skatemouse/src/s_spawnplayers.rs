@@ -49,7 +49,7 @@ pub fn setup() {
                 .with(user_id(), uid.clone())
                 .with(aspect_ratio_from_window(), entity::resources())
                 .with(is_glidercam(), ())
-                .with(selfie_stick(), vec3(0., 10., 15.))
+                .with(selfie_stick(), vec3(10., 10., 15.))
                 .with(selfie_focus_ent(), glider.clone())
                 .with(selfie_pitch(), 0.)
                 .with(selfie_yaw(), 0.)

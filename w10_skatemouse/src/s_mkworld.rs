@@ -1,13 +1,31 @@
 pub fn setup_world_entities() {
     let pillars = Entity::new().with(name(), "Pillars".to_string()).spawn();
-    for i in 0..30 {
-        let x = ((random::<u32>() % 10) as i32 - 5) * 2;
-        let y = ((random::<u32>() % 10) as i32 - 5) * 2;
-        entity::add_child(pillars, spawn_pillar_at(
-            ivec2(x,y).as_vec2().extend(0.0),
-            1.,
-            3. + 5. * random::<f32>()
-        ));
+    // for i in 0..30 {
+    //     let x = ((random::<u32>() % 10) as i32 - 5) * 2;
+    //     let y = ((random::<u32>() % 10) as i32 - 5) * 2;
+    //     entity::add_child(pillars, spawn_pillar_at(
+    //         ivec2(x,y).as_vec2().extend(0.0),
+    //         1.,
+    //         3. + 5. * random::<f32>()
+    //     ));
+    // }
+    
+    for x in -10..10 {
+        for y in -10..10 {
+            if (
+                (x % 2 == 0 || random::<f32>()<0.1)
+                &&
+                (y % 2 == 0 || random::<f32>()<0.1)
+            ) && random::<f32>()<0.9 {
+                let mut height = 0.2 + 0.8 * random::<f32>();
+                if random::<f32>() < 0.1 { height *= 1.0 + 5.0 * random::<f32>(); }
+                entity::add_child(pillars, spawn_pillar_at(
+                    ivec2(x,y).as_vec2().extend(0.0),
+                    1.,
+                    height
+                ));
+            }
+        }
     }
 }
 
