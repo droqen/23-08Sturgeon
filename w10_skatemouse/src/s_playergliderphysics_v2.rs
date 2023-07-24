@@ -36,14 +36,14 @@ pub fn setup() {
                 // .with(cube_collider(), vec3(0.5, 0.5, 0.5))
                 .with(sphere_collider(), 0.660/2.) // fills 66% of the corridor
                 .with(visualize_collider(), ())
-                .with(linear_velocity(), Vec3::ZERO)
+                .with(linear_velocity(), vec3(0., 0., 3.)) // toss up
                 .with(angular_velocity(), Vec3::ZERO)
 
                 .with(name(), "Hook pos".to_string())
                 .with(is_glider(), ())
                 .with(glider_landvel(), vec2(0., -1.))
                 .with(glider_desired_landvel(), vec2(0., -1.))
-                .with(glider_hook_pos(), gliderpos)
+                .with(glider_hook_pos(), gliderpos.truncate().extend(0.))
                 .with(user_id(), uid.clone())
                 // .with(cube(), ()) // hidden. see c_playeranim.
                 .with(translation(), gliderpos)
@@ -76,22 +76,44 @@ pub fn setup() {
             let accellin = 0.5 * delta_time();
             let accellerp = 0.02;
             let friction = 0.01;
-            entity::mutate_component(glider, glider_landvel(), move |landvel|{
-                *landvel = vel.truncate();
-                *landvel *= 1.-friction;
-                let to_desired_landvel : Vec2 = desired_landvel - *landvel;
+
+        //     entity::mutate_component(glider, glider_landvel(), move |landvel|{
+                
+        //         *landvel = vel.truncate();
+        //         *landvel *= 1.-friction;
+        //         let to_desired_landvel : Vec2 = desired_landvel - *landvel;
+        //         if to_desired_landvel.length_squared() < accellin * accellin {
+        //             *landvel = desired_landvel;
+        //         } else {
+        //             *landvel += to_desired_landvel.clamp_length_max(accellin) + to_desired_landvel * accellerp;
+        //         }
+        //         entity::set_component(glider, linear_velocity(), landvel.extend(vel.z));
+        //     });
+            
+            entity::mutate_component(glider, linear_velocity(), move |linvel|{
+                *linvel *= 1.-friction;
+                let to_desired_landvel : Vec2 = desired_landvel - linvel.truncate();
                 if to_desired_landvel.length_squared() < accellin * accellin {
-                    *landvel = desired_landvel;
+                    *linvel = (
+                        desired_landvel
+                    ).extend(linvel.z);
                 } else {
-                    *landvel += to_desired_landvel.clamp_length_max(accellin) + to_desired_landvel * accellerp;
+                    *linvel = (
+                        linvel.xy()
+                        + to_desired_landvel.clamp_length_max(accellin)
+                        + to_desired_landvel * accellerp
+                    ).extend(linvel.z);
                 }
-                entity::set_component(glider, linear_velocity(), landvel.extend(vel.z));
+
+                entity::set_component(glider, glider_landvel(), linvel.xy());
             });
+
+
             entity::mutate_component(glider, linear_velocity(), move |linvel|{
                 linvel.z -= 9.81 * delta_time(); // gravity
                 if pos.z - 1.0 < 0. {
                     linvel.z *= 0.95; // water has drag
-                    linvel.z += -(pos.z - 1.0) * 20. * delta_time(); // buoyancy
+                    linvel.z += -(pos.z - 1.0) * delta_time() * (15. + 10. * random::<f32>()); // buoyancy slightly unpredictable
                 }
             });
         }
