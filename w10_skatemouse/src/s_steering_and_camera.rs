@@ -48,7 +48,7 @@ pub fn setup_mouse_control() {
     query((translation(), glider_hook_pos())).each_frame(|gliders|{
         for (glider,(gliderpos,hookpos)) in gliders {
             let to_hookpos : Vec3 = hookpos - gliderpos;
-            if to_hookpos.length_squared() < 0.01 {
+            if to_hookpos.xy().length_squared() < 0.01 {
                 entity::set_component(glider, glider_desired_landvel(),
                     Vec2::ZERO
                 );
