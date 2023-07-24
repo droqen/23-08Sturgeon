@@ -30,12 +30,4 @@ pub fn setup() {
             });
         }
     });
-
-    query((is_glider(), translation(), glider_landvel())).each_frame(|gliders|{
-        for (glider,(_,_,landvel)) in gliders {
-            entity::mutate_component(glider, translation(), move |pos|{
-                *pos += landvel.extend(0.0) * delta_time();
-            });
-        }
-    });
 }
