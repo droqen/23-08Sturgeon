@@ -14,10 +14,10 @@ pub fn setup() {
                 desired_landvel = Vec2::ZERO;
             } else {
                 // let desired_landvel = to_hookpos.xy().normalize();
-                desired_landvel = to_hookpos.xy().clamp_length(0.1, 5.0) * 1.7;
+                desired_landvel = to_hookpos.xy().clamp_length(0.1, 5.0) * 1.0;
             }
-            let accellin = 1.0 * delta_time();
-            let accellerp = 0.05;
+            let accellin = 0.5 * delta_time();
+            let accellerp = 0.02;
             let friction = 0.01;
             entity::mutate_component(glider, glider_landvel(), move |landvel|{
                 *landvel *= 1.-friction;

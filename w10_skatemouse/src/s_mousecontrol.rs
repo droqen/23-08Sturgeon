@@ -1,17 +1,14 @@
 use ambient_api::{
     components::core::{
-        player::{player,user_id},
-        primitives::{cube,quad},
+        primitives::quad,
         physics::plane_collider,
-        transform::{lookat_target, translation},
     },
-    concepts::{make_perspective_infinite_reverse_camera, make_transformable},
+    concepts::make_transformable,
     prelude::*,
 };
 
-use crate::components::{is_glider,is_glidercam};
 use crate::components::{plr_glider,plr_glidercam};
-use crate::components::{selfie_stick, selfie_focus_ent, selfie_pitch, selfie_yaw};
+use crate::components::{selfie_pitch, selfie_yaw};
 use crate::components::glider_hook_pos;
 
 pub fn setup_mouse_control() {
