@@ -2,6 +2,7 @@ use ambient_api::{
     components::core::{
         primitives::quad,
         physics::plane_collider,
+        transform::translation,
     },
     concepts::make_transformable,
     prelude::*,
@@ -9,7 +10,7 @@ use ambient_api::{
 
 use crate::components::{plr_glider,plr_glidercam};
 use crate::components::{selfie_pitch, selfie_yaw};
-use crate::components::glider_hook_pos;
+use crate::components::{is_glider, glider_desired_landvel, glider_hook_pos};
 
 pub fn setup_mouse_control() {
     
@@ -30,6 +31,7 @@ pub fn setup_mouse_control() {
         .spawn();
 
     // mouse clicking/holding does a raycast to the mouse control plane
+    // and sets the appropriate player's 'glider_hook_pos'
 
     crate::messages::MouseDown::subscribe(move |src,msg|{
         let plr = src.client_entity_id().expect("MouseDown - Player has no entity");
@@ -37,8 +39,23 @@ pub fn setup_mouse_control() {
         for hit in physics::raycast(msg.mouse_ray_origin, msg.mouse_ray_dir) {
             if entity::has_component(hit.entity, plane_collider()) {
                 entity::set_component(glider, glider_hook_pos(), hit.position);
-                // entity::set_component(tempquad, translation(), hit.position);
-                // hit.distance, hit.entity
+            }
+        }
+    });
+
+    // set the player's desired_landvel
+    
+    query((translation(), glider_hook_pos())).each_frame(|gliders|{
+        for (glider,(gliderpos,hookpos)) in gliders {
+            let to_hookpos : Vec3 = hookpos - gliderpos;
+            if to_hookpos.length_squared() < 0.01 {
+                entity::set_component(glider, glider_desired_landvel(),
+                    Vec2::ZERO
+                );
+            } else {
+                entity::set_component(glider, glider_desired_landvel(),
+                    to_hookpos.xy().clamp_length(0.1, 5.0) * 1.0
+                );
             }
         }
     });

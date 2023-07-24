@@ -17,6 +17,7 @@ is_glider = { type = "Empty", attributes = ["Networked", "Debuggable"] }
 is_glidercam = { type = "Empty" }
 is_local_player_camera = { type = "Empty" }
 
+glider_desired_landvel = { type = "Vec2", attributes = ["Networked"] }
 glider_landvel = { type = "Vec2", attributes = ["Networked"] }
 # glider_hook_model = { type = "EntityId" }
 glider_hook_pos = { type = "Vec3", attributes = ["Networked"] }
