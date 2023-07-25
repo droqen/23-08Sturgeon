@@ -1,5 +1,9 @@
 [x] add physics - july 24
-[ ] buoyancy that allows objects to wobble a bit up/down in the water
+[ ] *generic* buoyancy that allows any object to wobble in the water
     [ ] a 'keel' component that causes a buoyant object to right itself
-[ ] mouse holes
 [ ] player delivery jobs
+    [>] slurp regions
+        [...] mouse holes - waiting on https://github.com/AmbientRun/Ambient/pull/616
+    [x] player carries item
+    [ ] slurp region gives player item
+    [ ] slurp region takes item away from player

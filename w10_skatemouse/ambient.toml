@@ -21,6 +21,7 @@ glider_desired_landvel = { type = "Vec2", attributes = ["Networked"] }
 glider_landvel = { type = "Vec2", attributes = ["Networked"] }
 # glider_hook_model = { type = "EntityId" }
 glider_hook_pos = { type = "Vec3", attributes = ["Networked"] }
+glider_cargo = { type = "EntityId", attributes = ["Networked"] }
 
 is_hook_model = { type = "Empty" }
 hook_model_pos = { type = "Vec3" }
