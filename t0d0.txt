@@ -6,7 +6,8 @@
         [...] mouse holes - waiting on https://github.com/AmbientRun/Ambient/pull/616
     [x] player carries item
     [x] slurp region gives player item
-    [x] slurp region takes item away from player
-    [ ] is there actual delivery gameplay?
+    [x] slurp region takes item away from player_glider
+[ ] shifting field of soft obstacles - garbage, algae, giant enemy crabs
 
-{ } collision layers pls
+{x} collision layers pls
+    -> requested @ https://github.com/AmbientRun/Ambient/issues/213
