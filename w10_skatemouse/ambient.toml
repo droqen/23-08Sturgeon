@@ -10,6 +10,12 @@ uvzero = { type = "Vec2" }
 mouse_ray_origin = { type = "Vec3" }
 mouse_ray_dir = { type = "Vec3" }
 
+[messages.add_cargo_to_glider.fields]
+glider = { type = "EntityId" }
+
+[messages.remove_cargo_from_glider.fields]
+glider = { type = "EntityId" }
+
 [components]
 plr_glider = { type = "EntityId" }
 plr_glidercam = { type = "EntityId", attributes = ["Networked", "Debuggable"] }
@@ -22,6 +28,10 @@ glider_landvel = { type = "Vec2", attributes = ["Networked"] }
 # glider_hook_model = { type = "EntityId" }
 glider_hook_pos = { type = "Vec3", attributes = ["Networked"] }
 glider_cargo = { type = "EntityId", attributes = ["Networked"] }
+
+proximity_trigger = { type = "F32", attributes = ["Networked", "Debuggable"] }
+prox_is_pickup = { type = "Empty" }
+prox_is_dropoff = { type = "Empty" }
 
 is_hook_model = { type = "Empty" }
 hook_model_pos = { type = "Vec3" }

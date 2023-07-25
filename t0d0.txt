@@ -5,5 +5,8 @@
     [>] slurp regions
         [...] mouse holes - waiting on https://github.com/AmbientRun/Ambient/pull/616
     [x] player carries item
-    [ ] slurp region gives player item
-    [ ] slurp region takes item away from player
+    [x] slurp region gives player item
+    [x] slurp region takes item away from player
+    [ ] is there actual delivery gameplay?
+
+{ } collision layers pls
