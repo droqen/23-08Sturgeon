@@ -8,6 +8,7 @@
     [x] slurp region gives player item
     [x] slurp region takes item away from player_glider
 [ ] shifting field of soft obstacles - garbage, algae, giant enemy crabs
+[ ] wake mechanic: project a wake behind you, pushing people (and objects?) behind you away.
 
 {x} collision layers pls
     -> requested @ https://github.com/AmbientRun/Ambient/issues/213
