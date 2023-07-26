@@ -1,0 +1,23 @@
+[package]
+name = "test_13_cube"
+
+edition = "2021"
+publish = false
+version = "0.0.1"
+
+[dependencies]
+ambient_api = { git = "https://github.com/AmbientRun/Ambient.git", rev = "0fb88c38df" }
+
+[[bin]]
+name = "client_test_13_cube"
+path = "src/client.rs"
+required-features = ["client"]
+
+[[bin]]
+name = "server_test_13_cube"
+path = "src/server.rs"
+required-features = ["server"]
+
+[features]
+client = ["ambient_api/client"]
+server = ["ambient_api/server"]
