@@ -15,4 +15,5 @@ members = [
 
     "test11_clientside_spawn_query",
     "test13-cube",
+    "test15-buoy",
 ]

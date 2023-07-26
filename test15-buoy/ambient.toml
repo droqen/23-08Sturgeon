@@ -1,0 +1,29 @@
+[ember]
+id = "test_15_buoy"
+name = "test15-buoy"
+version = "0.0.1"
+
+[components]
+
+# is_matter = { type = "Empty" }
+matter_gravity = { type = "F32" }
+
+# matter_is_buoyant = { type = "Empty" }
+buoy_radius = { type = "F32" }
+buoy_water_level = { type = "F32" }
+buoy_max_force = { type = "F32" }
+buoy_center_of_gravity_offset = { type = "Vec3" }
+buoy_max_friction = { type = "F32" }
+
+dbg_sub = { type = "F32", attributes=["Debuggable", "Networked"] }
+
+# [concepts.buoyant_matter]
+# name = "Buoyant matter"
+# description = "An object made of buoyant matter"
+
+# [concepts.buoyant_matter.components]
+# matter_gravity = 9.81
+# buoy_radius = 1.00
+# buoy_water_level = 0.00
+# buoy_max_force = 18.81
+# buoy_center_of_gravity_offset = [0.00, 0.00, -0.50]
