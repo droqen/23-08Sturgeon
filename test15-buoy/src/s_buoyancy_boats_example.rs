@@ -4,7 +4,8 @@ use ambient_api::{
         camera::aspect_ratio_from_window,
         prefab::prefab_from_url,
         model::model_from_url,
-        physics::{physics_controlled,dynamic,cube_collider,visualize_collider,linear_velocity,angular_velocity,},
+        physics::{physics_controlled,dynamic,cube_collider,visualize_collider,linear_velocity,angular_velocity,
+            collider_from_url,},
         primitives::{cube, quad},
         rendering::{color, transparency_group, cast_shadows},
         transform::{lookat_target, translation, rotation, scale},
@@ -31,21 +32,32 @@ pub fn setup_example_1() {
         .with(scale(), vec3(999., 999., 1.))
         .spawn();
 
-    make_boat( 0., 2. )
+    make_boat( -2., 2. )
         .with(color(), vec4(1., 0., 0., 1.))
         .with(angular_velocity(), vec3(1000., 0., 0.))
         .with(linear_velocity(), vec3(0., 0., 10.))
         .spawn();
-    make_boat( 4., 0. )
+    make_boat( -1., 3. )
         .spawn();
+
+    make_boat( 2., 0. )
+        .spawn();
+
+    query(angular_velocity()).each_frame(|angels|{
+        for (angel,angvel) in angels {
+            if random::<f32>()<0.01 {
+                entity::mutate_component(angel, angular_velocity(), |angvel|*angvel+=2.*(random::<Vec3>() - random::<Vec3>()));
+            }
+        }
+    });
 }
 
-fn make_boat(screenwise_x : f32, height : f32) -> Entity {
+fn make_boat(screenwise_x : f32, z : f32) -> Entity {
     Entity::new()
         .with_merge(make_transformable())
         // .with_merge(make_buoyant_matter())
         .with(matter_gravity(), 9.81)
-        .with(buoy_center_of_gravity_offset(), vec3(1.,0.,-0.5))
+        .with(buoy_center_of_gravity_offset(), vec3(0.,0.,-0.5))
         .with(buoy_radius(), 1.)
         .with(buoy_water_level(), 0.)
         .with(buoy_max_force(), 20.)
@@ -56,7 +68,9 @@ fn make_boat(screenwise_x : f32, height : f32) -> Entity {
         .with(visualize_collider(), ())
         .with(linear_velocity(), Vec3::ZERO)
         .with(angular_velocity(), Vec3::ZERO)
-        .with(translation(), vec3(screenwise_x, -screenwise_x, height))
+        .with(translation(), vec3(screenwise_x, -screenwise_x, z))
+        // .with(prefab_from_url(), asset::url("assets/MSH_Boat.glb").unwrap())
         .with(model_from_url(), asset::url("assets/MSH_Boat.glb").unwrap()) // creates model
-        .with(cube_collider(), vec3(1., 2., 1.))
+        .with(collider_from_url(), asset::url("assets/MSH_Boat.glb").unwrap())
+        // .with(cube_collider(), vec3(1., 2., 0.5))
 }
