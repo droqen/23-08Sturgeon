@@ -1,14 +1,39 @@
 [x] add physics - july 24
-[ ] *generic* buoyancy that allows any object to wobble in the water
-    [ ] a 'keel' component that causes a buoyant object to right itself
+
+[ ] visuals *o*
+
+[x] *generic* buoyancy that allows any object to wobble in the water
+    [x] a 'keel' component that causes a buoyant object to right itself
+        !!! [ ] implement in actual project
+[ ] more detailed building generation
+[ ] maze generation
 [ ] player delivery jobs
     [>] slurp regions
-        [...] mouse holes - waiting on https://github.com/AmbientRun/Ambient/pull/616
+        [...] mouse holes - waiting on https://github.com/AmbientRun/Ambient/pull/616 - done
     [x] player carries item
     [x] slurp region gives player item
     [x] slurp region takes item away from player_glider
+    [ ] delivery zones spawn/despawn, moving around?
+    [ ] actual distinct delivery quests?
+    [ ] track points
 [ ] shifting field of soft obstacles - garbage, algae, giant enemy crabs
 [ ] wake mechanic: project a wake behind you, pushing people (and objects?) behind you away.
 
 {x} collision layers pls
     -> requested @ https://github.com/AmbientRun/Ambient/issues/213
+
+[ ] playing tag is fun!!!
+[ ] collider_from_url
+    { } if that doesn't work then report issue
+    { } prefab_from_url breaks physics?
+
+modding
+>generating maps
+>entities, physical floating obstacles with behaviour
+>"quests"
+
+stretch goals that other people can make happen by building it themselves
+open road map? idea road map?
+>complex non-square-grid map generation & buildings
+>pathfinding, boat AI
+
