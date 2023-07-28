@@ -1,21 +1,23 @@
 use ambient_api::prelude::*;
 use ambient_api::components::core::transform::translation;
 use ambient_api::components::core::physics::angular_velocity;
-use components::dbg_sub;
+use components::buoy_submerged;
 
 mod x_camera;
+mod x_camera_follow_buoys;
 
 #[main]
 pub fn main() {
     let camera = x_camera::setup_camera1();
-    // ShowDbgInfo::el(camera).spawn_interactive();
+    // x_camera_follow_buoys::setup();
+    ShowDbgInfo::el(camera).spawn_interactive();
 }
 
 #[element_component]
 fn ShowDbgInfo(hooks: &mut Hooks, camera: EntityId) -> Element {
     let entities_with_hp = hooks.use_query((
         translation(),
-        dbg_sub(),
+        buoy_submerged(),
         angular_velocity(),
     ));
 
@@ -23,8 +25,8 @@ fn ShowDbgInfo(hooks: &mut Hooks, camera: EntityId) -> Element {
         entities_with_hp.iter().map(|(_id,(pos, sub, angvel))|{
             Centered::el([
                 Text::el(format!(
-                    // "{}", (*sub * 100.) as i32
-                    "{}", angvel
+                    "{}", (*sub * 100.) as i32
+                    // "{}", angvel
                 ))
             ]).with(
                 translation(),

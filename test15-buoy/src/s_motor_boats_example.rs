@@ -21,6 +21,10 @@ use crate::components::{
     buoy_radius, buoy_water_level, buoy_max_force, buoy_max_friction,
 };
 
+use crate::components::{
+    motor_desired_dir, motor_throttle_power, motor_offset,
+};
+
 pub fn setup_example_1() {
 
     // spawn water plane
@@ -40,7 +44,7 @@ pub fn setup_example_1() {
     make_boat( -1., 3. )
         .spawn();
 
-    make_boat( 2., 0. )
+    let boat = make_boat( 2., 0. )
         .spawn();
 }
 
@@ -54,6 +58,10 @@ fn make_boat(screenwise_x : f32, z : f32) -> Entity {
         .with(buoy_water_level(), 0.)
         .with(buoy_max_force(), 20.)
         .with(buoy_max_friction(), 3.)
+
+        .with(motor_desired_dir(), vec3(-1., -1., 0.).normalize())
+        .with(motor_throttle_power(), 0.1)
+        .with(motor_offset(), vec3(0.0, 1.0, 0.0))
 
         .with(physics_controlled(), ())
         .with(dynamic(), true)

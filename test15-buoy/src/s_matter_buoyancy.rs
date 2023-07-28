@@ -14,23 +14,38 @@ use ambient_api::{
 
 use crate::components::{
     // is_matter,
-    matter_gravity,
+    matter_gravity, matter_local_center,
     // matter_is_buoyant,
-    buoy_radius, buoy_water_level, buoy_max_force, buoy_max_friction, buoy_center_of_gravity_offset,
-
-    dbg_sub,
+    buoy_radius, buoy_water_level, buoy_max_force, buoy_max_friction,
+    buoy_submerged, buoy_submerged_center,
 };
 
 pub fn setup() {
+    query((translation(), buoy_radius(), buoy_water_level())).each_frame(|buoys|{
+        for (buoy,(pos,b_radius,b_water_level)) in buoys {
+            let submerged = get_submerged_percentage(pos.z, b_radius, b_water_level);
+            if submerged > 0. {
+                let underwater_point_center = 
+                entity::add_component(buoy, buoy_submerged(),
+                    submerged);
+                entity::add_component(buoy, buoy_submerged_center(),
+                    get_submerged_center_point(pos, b_water_level, b_radius, submerged).unwrap());
+            } else {
+                entity::remove_component(buoy, buoy_submerged());
+                entity::remove_component(buoy, buoy_submerged_center());
+            }
+        }
+    });
+
     query((
         translation(),
         rotation(),
         matter_gravity(),
-        buoy_radius(),
-        buoy_water_level(),
+        matter_local_center(),
+        buoy_submerged(),
+        buoy_submerged_center(),
         buoy_max_force(),
         buoy_max_friction(),
-        buoy_center_of_gravity_offset(),
         linear_velocity(),
         // angular_velocity(),
     )).each_frame(|buoys|{
@@ -39,24 +54,20 @@ pub fn setup() {
             pos,
             rot,
             gravity,
-            b_radius,
-            b_water_level,
+            m_center,
+            submerged,
+            submerged_center,
             b_max_force,
             b_max_friction,
-            b_center,
             linvel,
             // angvel,
         )) in buoys {
-            let submerged = get_submerged_percentage(pos.z, b_radius, b_water_level);
-
-            entity::add_component(floaty_ent, dbg_sub(), submerged);
 
             if submerged > 0.0 {
                 let b_force = vec3(0.,0.,1.) * b_max_force * submerged * delta_time();
                 let b_friction = b_max_friction * submerged * delta_time();
                 let b_friction_linvel_force = linvel * (-1.) * b_friction;
-                let b_point : Vec3 = get_submerged_point(pos, b_radius, submerged);
-                add_force_at_position(floaty_ent, pos + rot*b_center, b_force + b_friction_linvel_force, b_point);
+                add_force_at_position(floaty_ent, pos + rot*m_center, b_force + b_friction_linvel_force, submerged_center);
                 // let b_friction_angvel_force = angvel * (-1.) * b_friction;
                 entity::mutate_component(floaty_ent, angular_velocity(), |angvel|*angvel *= (1.0 - b_friction));
             }
@@ -65,9 +76,9 @@ pub fn setup() {
     });
 }
 
-fn add_force_at_position(ent : EntityId, ent_center_of_gravity : Vec3, force : Vec3, force_point : Vec3) {
+fn add_force_at_position(ent : EntityId, ent_mass_center_pos : Vec3, force : Vec3, force_point : Vec3) {
     entity::mutate_component(ent, linear_velocity(), |linvel|*linvel += force);
-    entity::mutate_component(ent, angular_velocity(), |angvel|*angvel += (force_point - ent_center_of_gravity).cross(force));
+    entity::mutate_component(ent, angular_velocity(), |angvel|*angvel += (force_point - ent_mass_center_pos).cross(force));
 }
 
 // currently assumes object is basically a cube
@@ -82,6 +93,8 @@ fn get_submerged_percentage(z : f32, radius : f32, water_level : f32) -> f32 {
     let zero_to_one = minusone_to_one * 0.5 + 0.5;
     return zero_to_one;
 }
-fn get_submerged_point(pos : Vec3, radius : f32, submerged_percentage : f32) -> Vec3 {
-    return pos + vec3(0., 0., radius * (2. * submerged_percentage - 1.));
+fn get_submerged_center_point(pos : Vec3, water_level : f32, radius : f32, submerged_percentage : f32) -> Option<Vec3> {
+    if submerged_percentage <= 0.0 { return None; }
+    let diameter = radius * 2.;
+    return Some(vec3(pos.x, pos.y, water_level - diameter * submerged_percentage));
 }
