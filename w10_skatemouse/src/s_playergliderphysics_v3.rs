@@ -23,7 +23,8 @@ use crate::components::{is_glider, is_glidercam};
 use crate::components::{plr_glider, plr_glidercam};
 use crate::components::{
     glider_landvel, glider_steer_vector, glider_hook_pos,
-    glider_stat_max_speed, glider_stat_handling, glider_stat_reverse_speed,};
+    glider_stat_max_speed, glider_stat_handling, glider_stat_reverse_speed,
+    glider_forward, glider_forward_rotvel,};
 use crate::components::{selfie_stick, selfie_focus_ent, selfie_pitch, selfie_yaw};
 
 
@@ -64,6 +65,8 @@ pub fn setup() {
                 .with(glider_landvel(), vec2(0., -1.))
                 .with(glider_steer_vector(), vec2(0., -1.))
                 .with(glider_hook_pos(), gliderpos.truncate().extend(0.))
+                .with(glider_forward(), vec2(0., 1.))
+                .with(glider_forward_rotvel(), 10.)
 
                 .with(glider_stat_max_speed(), 20.0)
                 .with(glider_stat_handling(), 2.0)
@@ -81,7 +84,7 @@ pub fn setup() {
                 .with(buoy_max_friction(), 3.)
 
                 .spawn();
-        
+            
             entity::add_component(plr, plr_glider(), glider);
 
             let glidercam = Entity::new()
@@ -108,7 +111,7 @@ pub fn setup() {
         is_glider(),
         translation(),
         rotation(),
-        local_forward(),
+        glider_forward(),
         glider_steer_vector(),
         glider_landvel(),
         linear_velocity(),
@@ -117,13 +120,12 @@ pub fn setup() {
             _,
             pos,
             rot,
-            local_fwd,
+            fwd,
             steer_vec2,
             landvel,
             vel,
         )) in gliders {
-            let fwd : Vec3 = rot * local_fwd;
-            let angle_to_fwd = notnan_or_zero(fwd.truncate().angle_between(steer_vec2));
+            let angle_to_fwd = notnan_or_zero(fwd.angle_between(steer_vec2));
             // let angle_to_fwd = notnan_or_zero(fwd.truncate().angle_between(steer_vec2)) * (steer_vec2.length() * 1.5 - 0.5).clamp(0.0, 1.0);
 
             let accellin = 0.5 * delta_time();
@@ -188,6 +190,12 @@ pub fn setup() {
             //     let to_live_target_zangvel = (live_target_zangvel - angvel.z).clamp(-0.5, 0.5);
             //     angvel.z += to_live_target_zangvel * target_speed * delta_time(); // turn!
             // });
+        }
+    });
+
+    query(glider_forward_rotvel()).each_frame(|gliders|{
+        for(glider,fwd_rotvel) in gliders {
+            entity::mutate_component(glider, glider_forward(), |forward|*forward=forward.rotate(Vec2::from_angle(fwd_rotvel*delta_time())));
         }
     });
 }

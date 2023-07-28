@@ -16,13 +16,28 @@ use ambient_api::{
     prelude::*,
 };
 
-use crate::components::glider_hook_pos;
+use crate::components::{glider_hook_pos, glider_forward};
 use crate::components::local_forward;
 
 pub fn setup(camera : EntityId) {
-    LocalForwardUI::el(camera).spawn_interactive();
+    GliderForwardUI::el(camera).spawn_interactive();
     // HookLineUI::el(camera).spawn_interactive();
     // PhysCircleUI::el(camera).spawn_interactive();
+}
+
+// DISPLAYS LINE INDICATING Glider_FORWARD
+#[element_component]
+pub fn GliderForwardUI(hooks: &mut Hooks, camera : EntityId) -> Element {
+    let forward_ents = hooks.use_query((translation(), glider_forward()));
+    Group::el(
+        forward_ents.iter().map(|(_ent,(pos,fwd))|{
+            Line::el()
+                .with(line_width(), 2.)
+                .with(color(), vec4(1., 1., 0., 1.))
+                .with(line_from(), camera::world_to_screen(camera, *pos).extend(0.))
+                .with(line_to(), camera::world_to_screen(camera, *pos + fwd.extend(0.0) * 10.).extend(0.))
+        })
+    )
 }
 
 // DISPLAYS LINE INDICATING LOCAL_FORWARD

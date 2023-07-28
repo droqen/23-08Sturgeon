@@ -65,8 +65,6 @@ selfie_yaw = { type = "F32" }
 # clientside components?
 glider_animodel = { type = "EntityId" }
 animodel_lookdir = { type = "Vec3", attributes=["Debuggable"] }
-animodel_yaw = { type = "F32" }
-animodel_yawvel = { type = "F32" }
 
 # is_matter = { type = "Empty" }
 matter_gravity = { type = "F32" }
