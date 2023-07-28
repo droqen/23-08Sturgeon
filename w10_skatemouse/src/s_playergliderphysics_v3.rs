@@ -62,7 +62,7 @@ pub fn setup() {
                 .with(translation(), gliderpos)
 
                 .with(matter_gravity(), 9.81)
-                .with(matter_local_center(), vec3(0.,0.,-0.5))
+                .with(matter_local_center(), vec3(0.,0.,-1.))
                 .with(buoy_radius(), 1.)
                 .with(buoy_water_level(), 0.)
                 .with(buoy_max_force(), 20.)
@@ -97,6 +97,15 @@ pub fn setup() {
             let accellin = 0.5 * delta_time();
             let accellerp = 0.02;
             let friction = 0.01;
+
+            let mut achievable_landvel = desired_landvel;
+            if let Some(submerged) = entity::get_component(glider, buoy_submerged()) {
+                if submerged < 0.50 {
+                    achievable_landvel *= 0.25 + 0.75 * submerged * 2.;
+                }
+            } else {
+                achievable_landvel *= 0.00; // no movement is allowed? maybe allow twitches or something
+            }
             
             entity::mutate_component(glider, linear_velocity(), move |linvel|{
                 *linvel *= 1.-friction;

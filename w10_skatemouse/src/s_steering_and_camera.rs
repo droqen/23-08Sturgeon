@@ -55,7 +55,7 @@ pub fn setup_mouse_control() {
                 );
             } else {
                 entity::set_component(glider, glider_desired_landvel(),
-                    to_hookpos.xy().clamp_length(0.1, 5.0) * 1.0
+                    to_hookpos.xy().clamp_length(0.1, 5.0) * 2.0
                 );
             }
         }
