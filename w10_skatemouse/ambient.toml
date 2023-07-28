@@ -58,3 +58,12 @@ glider_animodel = { type = "EntityId" }
 animodel_lookdir = { type = "Vec3", attributes=["Debuggable"] }
 animodel_yaw = { type = "F32" }
 animodel_yawvel = { type = "F32" }
+
+# buoyancy stuff - may belong to separate thing though
+matter_gravity = { type = "F32" }
+buoy_radius = { type = "F32" }
+buoy_water_level = { type = "F32" }
+buoy_max_force = { type = "F32" }
+buoy_center_of_gravity_offset = { type = "Vec3" }
+buoy_max_friction = { type = "F32" }
+dbg_sub = { type = "F32", attributes=["Debuggable", "Networked"] }
