@@ -9,7 +9,7 @@ mod s_motor_boats_example;
 #[main]
 pub fn main() {
     s_matter_buoyancy::setup();
-    s_matter_motors::setup();
-    // s_buoyancy_boats_example::setup_example_1();
-    s_motor_boats_example::setup_example_1();
+    // s_matter_motors::setup();
+    s_buoyancy_boats_example::setup_example_1();
+    // s_motor_boats_example::setup_example_1();
 }
