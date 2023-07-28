@@ -89,12 +89,12 @@ pub fn setup_world_entities() {
                 &&
                 (y % 2 == 0 || random::<f32>()<0.1)
             ) && random::<f32>()<0.9 {
-                let mut height = 1.0 + 0.8 * random::<f32>();
-                let mut depth = 10.0;
+                let mut height = 2.0 + 1.6 * random::<f32>();
+                let mut depth = 20.0;
                 if random::<f32>() < 0.1 { height *= 1.0 + 5.0 * random::<f32>(); }
                 entity::add_child(pillars, spawn_pillar_at(
-                    ivec2(x,y).as_vec2().extend(0.0),
-                    1.,
+                    ivec2(x,y).as_vec2().extend(0.0) * 2.,
+                    2.,
                     height,
                     depth,
                 ));

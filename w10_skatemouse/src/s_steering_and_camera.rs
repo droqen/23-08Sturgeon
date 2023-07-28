@@ -28,6 +28,7 @@ pub fn setup_mouse_control() {
     Entity::new()
         .with_merge(make_transformable())
         .with(plane_collider(), ())
+        .with(translation(), vec3(0., 0., -2.))
         .spawn();
 
     // mouse clicking/holding does a raycast to the mouse control plane
@@ -38,7 +39,7 @@ pub fn setup_mouse_control() {
         let glider = entity::get_component(plr, plr_glider()).expect("Player has no glidercam");
         for hit in physics::raycast(msg.mouse_ray_origin, msg.mouse_ray_dir) {
             if entity::has_component(hit.entity, plane_collider()) {
-                entity::set_component(glider, glider_hook_pos(), hit.position);
+                entity::set_component(glider, glider_hook_pos(), hit.position.truncate().extend(0.0));
             }
         }
     });
