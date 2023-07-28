@@ -18,10 +18,16 @@ use ambient_api::{
     // glam::EulerRot,
 };
 
+use crate::components::local_forward;
 use crate::components::{is_glider, is_glidercam};
 use crate::components::{plr_glider, plr_glidercam};
-use crate::components::{glider_landvel, glider_desired_landvel, glider_hook_pos};
+use crate::components::{
+    glider_landvel, glider_desired_landvel, glider_hook_pos,
+    glider_stat_max_speed, glider_stat_handling, glider_stat_reverse_speed,};
 use crate::components::{selfie_stick, selfie_focus_ent, selfie_pitch, selfie_yaw};
+
+
+
 
 use crate::components::{matter_gravity, matter_local_center,
     buoy_max_force, buoy_max_friction, buoy_radius, buoy_water_level, buoy_submerged,
@@ -47,16 +53,22 @@ pub fn setup() {
                 // .with(sphere_collider(), 0.70)
                 .with(model_from_url(), asset::url("assets/MSH_Boat.glb").unwrap())
                 .with(collider_from_url(), asset::url("assets/MSH_Boat.glb").unwrap())
-                .with(visualize_collider(), ())
+                // .with(visualize_collider(), ())
 
                 .with(linear_velocity(), vec3(0., 0., 3.)) // toss up
                 .with(angular_velocity(), Vec3::ZERO)
 
                 .with(name(), "Hook pos".to_string())
+                .with(local_forward(), vec3(0., 1., 0.))
                 .with(is_glider(), ())
                 .with(glider_landvel(), vec2(0., -1.))
                 .with(glider_desired_landvel(), vec2(0., -1.))
                 .with(glider_hook_pos(), gliderpos.truncate().extend(0.))
+
+                .with(glider_stat_max_speed(), 20.0)
+                .with(glider_stat_handling(), 2.0)
+                .with(glider_stat_reverse_speed(), 5.0)
+
                 .with(user_id(), uid.clone())
                 // .with(cube(), ()) // hidden. see c_playeranim.
                 .with(translation(), gliderpos)
@@ -92,39 +104,76 @@ pub fn setup() {
         }
     });
     
-    query((is_glider(), translation(), glider_desired_landvel(), glider_landvel(), linear_velocity())).each_frame(|gliders|{
-        for (glider, (_, pos, desired_landvel, landvel, vel)) in gliders {
+    query((
+        is_glider(),
+        translation(),
+        rotation(),
+        local_forward(),
+        glider_desired_landvel(),
+        glider_landvel(),
+        linear_velocity(),
+    )).each_frame(|gliders|{
+        for (glider, (
+            _,
+            pos,
+            rot,
+            local_fwd,
+            steer_vec2,
+            landvel,
+            vel,
+        )) in gliders {
+            let fwd : Vec3 = rot * local_fwd;
+            let angle_to_fwd = notnan_or_zero(fwd.truncate().angle_between(steer_vec2));
+            // let angle_to_fwd = notnan_or_zero(fwd.truncate().angle_between(steer_vec2)) * (steer_vec2.length() * 1.5 - 0.5).clamp(0.0, 1.0);
+
             let accellin = 0.5 * delta_time();
             let accellerp = 0.02;
             let friction = 0.01;
 
-            let mut achievable_landvel = desired_landvel;
-            if let Some(submerged) = entity::get_component(glider, buoy_submerged()) {
-                if submerged < 0.50 {
-                    achievable_landvel *= 0.25 + 0.75 * submerged * 2.;
+            let stat_max_speed =     entity::get_component(glider, glider_stat_max_speed())
+                .unwrap_or(10.0);
+            let stat_handling =     entity::get_component(glider, glider_stat_handling())
+                .unwrap_or(1.0);
+            let stat_reverse_speed =    entity::get_component(glider, glider_stat_reverse_speed())
+                .unwrap_or(4.0);
+
+            let mut target_speed = stat_max_speed * steer_vec2.length();
+
+            if target_speed > 0. {
+                let backup_angle = 0. + stat_handling;
+                let full_speed_angle = 0. + stat_handling/2.;
+                let backup_amount = invlerp(full_speed_angle, backup_angle, angle_to_fwd.abs()).clamp(0., 1.);
+
+                target_speed *= lerp(stat_max_speed, stat_reverse_speed, backup_amount) / stat_max_speed;
+
+                if let Some(submerged) = entity::get_component(glider, buoy_submerged()) {
+                    if submerged < 0.50 {
+                        target_speed *= 0.25 + 0.75 * submerged * 2.;
+                    }
+                } else {
+                    target_speed = 0. // no movement is allowed? maybe allow twitches or something
                 }
-            } else {
-                achievable_landvel *= 0.00; // no movement is allowed? maybe allow twitches or something
             }
+
+            let live_target_landvel : Vec2 = steer_vec2 * target_speed;
             
             entity::mutate_component(glider, linear_velocity(), move |linvel|{
                 *linvel *= 1.-friction;
-                let to_desired_landvel : Vec2 = desired_landvel - linvel.truncate();
-                if to_desired_landvel.length_squared() < accellin * accellin {
+                let to_live_target_landvel : Vec2 = live_target_landvel - linvel.truncate();
+                if to_live_target_landvel.length_squared() < accellin * accellin {
                     *linvel = (
-                        desired_landvel
+                        live_target_landvel
                     ).extend(linvel.z);
                 } else {
                     *linvel = (
                         linvel.xy()
-                        + to_desired_landvel.clamp_length_max(accellin)
-                        + to_desired_landvel * accellerp
+                        + to_live_target_landvel.clamp_length_max(accellin)
+                        + to_live_target_landvel * accellerp
                     ).extend(linvel.z);
                 }
 
                 entity::set_component(glider, glider_landvel(), linvel.xy());
             });
-
 
             entity::mutate_component(glider, linear_velocity(), move |linvel|{
                 linvel.z -= 9.81 * delta_time(); // gravity
@@ -133,6 +182,26 @@ pub fn setup() {
                     linvel.z += -(pos.z - 1.0) * delta_time() * (15. + 10. * random::<f32>()); // buoyancy slightly unpredictable
                 }
             });
+
+            entity::mutate_component(glider, angular_velocity(), |angvel|{
+                let live_target_zangvel = angle_to_fwd * 3.0;
+                let to_live_target_zangvel = (live_target_zangvel - angvel.z).clamp(-0.5, 0.5);
+                angvel.z += to_live_target_zangvel * target_speed * delta_time(); // turn!
+            });
         }
     });
+}
+
+fn invlerp(from : f32, to : f32, value : f32) -> f32 { (value - from) / (to - from) }
+fn lerp(from : f32, to : f32, rel : f32) -> f32 { ((1. - rel) * from) + (rel * to) }
+fn remap(origFrom : f32, origTo : f32, targetFrom : f32, targetTo : f32, value : f32) {
+    let rel = invlerp(origFrom, origTo, value);
+    lerp(targetFrom, targetTo, rel);
+}
+fn remap_clamped(origFrom : f32, origTo : f32, targetFrom : f32, targetTo : f32, value : f32) {
+    let rel = invlerp(origFrom, origTo, value).clamp(0., 1.);
+    lerp(targetFrom, targetTo, rel);
+}
+fn notnan_or_zero(notnan : f32) -> f32 {
+    if notnan.is_nan() { 0. } else { notnan }
 }

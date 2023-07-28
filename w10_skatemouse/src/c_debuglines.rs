@@ -5,7 +5,7 @@ use ambient_api::{
         layout::space_between_items,
         physics::sphere_collider,
         rendering::color,
-        transform::{lookat_target, translation},
+        transform::{lookat_target, translation, rotation},
         rect::{
             background_color, border_color, border_radius, border_thickness, line_from, line_to,
             line_width,
@@ -17,10 +17,27 @@ use ambient_api::{
 };
 
 use crate::components::glider_hook_pos;
+use crate::components::local_forward;
 
 pub fn setup(camera : EntityId) {
+    LocalForwardUI::el(camera).spawn_interactive();
     // HookLineUI::el(camera).spawn_interactive();
     // PhysCircleUI::el(camera).spawn_interactive();
+}
+
+// DISPLAYS LINE INDICATING LOCAL_FORWARD
+#[element_component]
+pub fn LocalForwardUI(hooks: &mut Hooks, camera : EntityId) -> Element {
+    let forward_ents = hooks.use_query((translation(), rotation(), local_forward()));
+    Group::el(
+        forward_ents.iter().map(|(_ent,(pos,rot,local_fwd))|{
+            Line::el()
+                .with(line_width(), 2.)
+                .with(color(), vec4(1., 1., 0., 1.))
+                .with(line_from(), camera::world_to_screen(camera, *pos).extend(0.))
+                .with(line_to(), camera::world_to_screen(camera, *pos + (*rot * *local_fwd) * 10.).extend(0.))
+        })
+    )
 }
 
 // DISPLAYS DEBUG CIRCLE ON SPHERE COLLIDERS

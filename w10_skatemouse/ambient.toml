@@ -17,6 +17,8 @@ glider = { type = "EntityId" }
 glider = { type = "EntityId" }
 
 [components]
+local_forward = { type = "Vec3", attributes = ["Networked"] }
+
 plr_glider = { type = "EntityId" }
 plr_glidercam = { type = "EntityId", attributes = ["Networked", "Debuggable"] }
 is_glider = { type = "Empty", attributes = ["Networked", "Debuggable"] }
@@ -28,6 +30,10 @@ glider_landvel = { type = "Vec2", attributes = ["Networked"] }
 # glider_hook_model = { type = "EntityId" }
 glider_hook_pos = { type = "Vec3", attributes = ["Networked"] }
 glider_cargo = { type = "EntityId", attributes = ["Networked"] }
+
+glider_stat_max_speed = { type = "F32" }
+glider_stat_handling = { type = "F32" }
+glider_stat_reverse_speed = { type = "F32" }
 
 proximity_trigger = { type = "F32", attributes = ["Networked", "Debuggable"] }
 prox_is_pickup = { type = "Empty" }
