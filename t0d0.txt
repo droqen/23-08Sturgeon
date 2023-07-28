@@ -1,10 +1,11 @@
 [x] add physics - july 24
 
 [ ] visuals *o*
+    [ ] fix player rotation pplsss
 
 [x] *generic* buoyancy that allows any object to wobble in the water
     [x] a 'keel' component that causes a buoyant object to right itself
-        !!! [ ] implement in actual project
+        !!! [x] implement in actual project
 [ ] more detailed building generation
 [ ] maze generation
 [ ] player delivery jobs
