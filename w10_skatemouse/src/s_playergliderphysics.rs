@@ -12,7 +12,7 @@ use ambient_api::{
 
 use crate::components::{is_glider, is_glidercam};
 use crate::components::{plr_glider, plr_glidercam};
-use crate::components::{glider_landvel, glider_desired_landvel, glider_hook_pos};
+use crate::components::{glider_landvel, glider_steer_vector, glider_hook_pos};
 use crate::components::{selfie_stick, selfie_focus_ent, selfie_pitch, selfie_yaw};
 
 pub fn setup() {
@@ -31,7 +31,7 @@ pub fn setup() {
                 .with(name(), "Hook pos".to_string())
                 .with(is_glider(), ())
                 .with(glider_landvel(), vec2(0., -1.))
-                .with(glider_desired_landvel(), vec2(0., -1.))
+                .with(glider_steer_vector(), vec2(0., -1.))
                 .with(glider_hook_pos(), gliderpos)
                 .with(user_id(), uid.clone())
                 // .with(cube(), ()) // hidden. see c_playeranim.
@@ -60,7 +60,7 @@ pub fn setup() {
         }
     });
     
-    query((is_glider(), translation(), glider_desired_landvel(), glider_landvel())).each_frame(|gliders|{
+    query((is_glider(), translation(), glider_steer_vector(), glider_landvel())).each_frame(|gliders|{
         for (glider,(_,_,desired_landvel,landvel)) in gliders {
             let accellin = 0.5 * delta_time();
             let accellerp = 0.02;

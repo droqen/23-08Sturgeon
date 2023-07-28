@@ -10,7 +10,7 @@ use ambient_api::{
 
 use crate::components::{plr_glider,plr_glidercam};
 use crate::components::{selfie_pitch, selfie_yaw};
-use crate::components::{is_glider, glider_desired_landvel, glider_hook_pos};
+use crate::components::{is_glider, glider_steer_vector, glider_hook_pos};
 
 pub fn setup_mouse_control() {
     
@@ -50,11 +50,11 @@ pub fn setup_mouse_control() {
         for (glider,(gliderpos,hookpos)) in gliders {
             let to_hookpos : Vec3 = hookpos - gliderpos;
             if to_hookpos.xy().length_squared() < 0.01 {
-                entity::set_component(glider, glider_desired_landvel(),
+                entity::set_component(glider, glider_steer_vector(),
                     Vec2::ZERO
                 );
             } else {
-                entity::set_component(glider, glider_desired_landvel(),
+                entity::set_component(glider, glider_steer_vector(),
                     to_hookpos.xy().clamp_length(0.1, 5.0) / 5.0
                 );
             }

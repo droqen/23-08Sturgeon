@@ -25,11 +25,14 @@ is_glider = { type = "Empty", attributes = ["Networked", "Debuggable"] }
 is_glidercam = { type = "Empty" }
 is_local_player_camera = { type = "Empty" }
 
-glider_desired_landvel = { type = "Vec2", attributes = ["Networked"] }
+glider_steer_vector = { type = "Vec2", attributes = ["Networked"] }
 glider_landvel = { type = "Vec2", attributes = ["Networked"] }
 # glider_hook_model = { type = "EntityId" }
 glider_hook_pos = { type = "Vec3", attributes = ["Networked"] }
 glider_cargo = { type = "EntityId", attributes = ["Networked"] }
+
+glider_forward = { type = "Vec2", attributes = ["Networked"] }
+glider_forward_rotvel = { type = "F32" }
 
 glider_stat_max_speed = { type = "F32" }
 glider_stat_handling = { type = "F32" }

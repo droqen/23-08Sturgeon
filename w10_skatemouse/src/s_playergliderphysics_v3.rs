@@ -7,9 +7,9 @@ use ambient_api::{
         // primitives::cube,
         physics::{
             // cube_collider,
-            // sphere_collider,
+            sphere_collider,
             physics_controlled, dynamic, linear_velocity, angular_velocity, visualize_collider,
-            collider_from_url,
+            // collider_from_url,
         },
         transform::{lookat_target, translation, rotation},
     },
@@ -22,7 +22,7 @@ use crate::components::local_forward;
 use crate::components::{is_glider, is_glidercam};
 use crate::components::{plr_glider, plr_glidercam};
 use crate::components::{
-    glider_landvel, glider_desired_landvel, glider_hook_pos,
+    glider_landvel, glider_steer_vector, glider_hook_pos,
     glider_stat_max_speed, glider_stat_handling, glider_stat_reverse_speed,};
 use crate::components::{selfie_stick, selfie_focus_ent, selfie_pitch, selfie_yaw};
 
@@ -50,9 +50,9 @@ pub fn setup() {
                 .with(physics_controlled(), ())
                 .with(dynamic(), true)
                 // .with(cube_collider(), vec3(1.0, 1.0, 0.25))
-                // .with(sphere_collider(), 0.70)
-                .with(model_from_url(), asset::url("assets/MSH_Boat.glb").unwrap())
-                .with(collider_from_url(), asset::url("assets/MSH_Boat.glb").unwrap())
+                .with(sphere_collider(), 0.70)
+                // .with(model_from_url(), asset::url("assets/MSH_Boat.glb").unwrap())
+                // .with(collider_from_url(), asset::url("assets/MSH_Boat.glb").unwrap())
                 // .with(visualize_collider(), ())
 
                 .with(linear_velocity(), vec3(0., 0., 3.)) // toss up
@@ -62,7 +62,7 @@ pub fn setup() {
                 .with(local_forward(), vec3(0., 1., 0.))
                 .with(is_glider(), ())
                 .with(glider_landvel(), vec2(0., -1.))
-                .with(glider_desired_landvel(), vec2(0., -1.))
+                .with(glider_steer_vector(), vec2(0., -1.))
                 .with(glider_hook_pos(), gliderpos.truncate().extend(0.))
 
                 .with(glider_stat_max_speed(), 20.0)
@@ -109,7 +109,7 @@ pub fn setup() {
         translation(),
         rotation(),
         local_forward(),
-        glider_desired_landvel(),
+        glider_steer_vector(),
         glider_landvel(),
         linear_velocity(),
     )).each_frame(|gliders|{
@@ -183,11 +183,11 @@ pub fn setup() {
                 }
             });
 
-            entity::mutate_component(glider, angular_velocity(), |angvel|{
-                let live_target_zangvel = angle_to_fwd * 3.0;
-                let to_live_target_zangvel = (live_target_zangvel - angvel.z).clamp(-0.5, 0.5);
-                angvel.z += to_live_target_zangvel * target_speed * delta_time(); // turn!
-            });
+            // entity::mutate_component(glider, angular_velocity(), |angvel|{
+            //     let live_target_zangvel = angle_to_fwd * 3.0;
+            //     let to_live_target_zangvel = (live_target_zangvel - angvel.z).clamp(-0.5, 0.5);
+            //     angvel.z += to_live_target_zangvel * target_speed * delta_time(); // turn!
+            // });
         }
     });
 }
