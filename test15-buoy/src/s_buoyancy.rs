@@ -34,7 +34,8 @@ pub fn setup() {
         linear_velocity(),
         // angular_velocity(),
     )).each_frame(|buoys|{
-        for(floaty_ent, (
+        for(floaty_ent,
+            (
             pos,
             rot,
             gravity,
@@ -54,9 +55,10 @@ pub fn setup() {
                 let b_force = vec3(0.,0.,1.) * b_max_force * submerged * delta_time();
                 let b_friction = b_max_friction * submerged * delta_time();
                 let b_friction_linvel_force = linvel * (-1.) * b_friction;
-                // let b_friction_angvel_force = angvel * (-1.) * b_friction;
                 let b_point : Vec3 = get_submerged_point(pos, b_radius, submerged);
                 add_force_at_position(floaty_ent, pos + rot*b_center, b_force + b_friction_linvel_force, b_point);
+                // let b_friction_angvel_force = angvel * (-1.) * b_friction;
+                entity::mutate_component(floaty_ent, angular_velocity(), |angvel|*angvel *= (1.0 - b_friction));
             }
             entity::mutate_component(floaty_ent, linear_velocity(), |linvel|*linvel += vec3(0., 0., -gravity * delta_time()));
         }
