@@ -8,7 +8,7 @@ mod x_camera;
 #[main]
 pub fn main() {
     let camera = x_camera::setup_camera1();
-    ShowDbgInfo::el(camera).spawn_interactive();
+    // ShowDbgInfo::el(camera).spawn_interactive();
 }
 
 #[element_component]
