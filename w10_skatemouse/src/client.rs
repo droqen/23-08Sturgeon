@@ -45,6 +45,6 @@ pub fn main() {
         |cam|crate::c_debuglines::setup(cam));
 
     crate::c_hookmodel::setup_hook_model();
-    // crate::c_playeranim_model::setup();
+    crate::c_playeranim_model::setup();
 
 }
