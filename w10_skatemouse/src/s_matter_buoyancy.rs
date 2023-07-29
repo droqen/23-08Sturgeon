@@ -37,10 +37,17 @@ pub fn setup() {
         }
     });
 
+    query(
+        matter_gravity()
+    ).each_frame(|buoys|{
+        for (floaty_ent,gravity) in buoys {
+            entity::mutate_component(floaty_ent, linear_velocity(), |linvel|*linvel += vec3(0., 0., -gravity * delta_time()));
+        }
+    });
+
     query((
         translation(),
         rotation(),
-        matter_gravity(),
         matter_local_center(),
         buoy_submerged(),
         buoy_submerged_center(),
@@ -48,11 +55,9 @@ pub fn setup() {
         buoy_max_friction(),
         linear_velocity(),
     )).each_frame(|buoys|{
-        for(floaty_ent,
-            (
+        for(floaty_ent,(
             pos,
             rot,
-            gravity,
             m_center,
             submerged,
             submerged_center,
@@ -69,7 +74,7 @@ pub fn setup() {
                 // let b_friction_angvel_force = angvel * (-1.) * b_friction;
                 entity::mutate_component(floaty_ent, angular_velocity(), |angvel|*angvel *= (1.0 - b_friction));
             }
-            entity::mutate_component(floaty_ent, linear_velocity(), |linvel|*linvel += vec3(0., 0., -gravity * delta_time()));
+
         }
     });
 }
