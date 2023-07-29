@@ -15,7 +15,7 @@ use components::is_local_player_camera;
 mod c_pinutils;
 mod c_hookmodel;
 mod c_findmycam;
-mod c_playeranim_model;
+mod c_playeranim_model_v2;
 mod c_debuglines;
 
 const GLIDER_CAMERA_OFFSET : Vec3 = vec3(5., 5., 5.); // unused
@@ -45,6 +45,6 @@ pub fn main() {
         |cam|crate::c_debuglines::setup(cam));
 
     crate::c_hookmodel::setup_hook_model();
-    crate::c_playeranim_model::setup();
+    crate::c_playeranim_model_v2::setup();
 
 }
