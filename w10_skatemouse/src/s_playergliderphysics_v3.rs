@@ -54,7 +54,7 @@ pub fn setup() {
                 .with(sphere_collider(), 0.70)
                 // .with(model_from_url(), asset::url("assets/MSH_Boat.glb").unwrap())
                 // .with(collider_from_url(), asset::url("assets/MSH_Boat.glb").unwrap())
-                // .with(visualize_collider(), ())
+                .with(visualize_collider(), ())
 
                 .with(linear_velocity(), vec3(0., 0., 3.)) // toss up
                 .with(angular_velocity(), Vec3::ZERO)
@@ -128,10 +128,6 @@ pub fn setup() {
             let angle_to_fwd = notnan_or_zero(fwd.angle_between(steer_vec2));
             // let angle_to_fwd = notnan_or_zero(fwd.truncate().angle_between(steer_vec2)) * (steer_vec2.length() * 1.5 - 0.5).clamp(0.0, 1.0);
 
-            let accellin = 0.5 * delta_time();
-            let accellerp = 0.02;
-            let friction = 0.01;
-
             let stat_max_speed =     entity::get_component(glider, glider_stat_max_speed())
                 .unwrap_or(10.0);
             let stat_handling =     entity::get_component(glider, glider_stat_handling())
@@ -139,57 +135,70 @@ pub fn setup() {
             let stat_reverse_speed =    entity::get_component(glider, glider_stat_reverse_speed())
                 .unwrap_or(4.0);
 
-            let mut target_speed = stat_max_speed * steer_vec2.length();
+            let mut traction = 1.0;
 
-            if target_speed > 0. {
-                let backup_angle = 0. + stat_handling;
-                let full_speed_angle = 0. + stat_handling/2.;
-                let backup_amount = invlerp(full_speed_angle, backup_angle, angle_to_fwd.abs()).clamp(0., 1.);
+            let backup_angle = 0. + stat_handling;
+            let full_speed_angle = 0. + stat_handling/2.;
+            let backup_amount = invlerp(full_speed_angle, backup_angle, angle_to_fwd.abs()).clamp(0., 1.);
 
-                target_speed *= lerp(stat_max_speed, stat_reverse_speed, backup_amount) / stat_max_speed;
+            traction *= lerp(stat_max_speed, stat_reverse_speed, backup_amount) / stat_max_speed;
 
-                if let Some(submerged) = entity::get_component(glider, buoy_submerged()) {
-                    if submerged < 0.50 {
-                        target_speed *= 0.25 + 0.75 * submerged * 2.;
-                    }
-                } else {
-                    target_speed = 0. // no movement is allowed? maybe allow twitches or something
+            if let Some(submerged) = entity::get_component(glider, buoy_submerged()) {
+                if submerged < 0.50 {
+                    traction *= 0.25 + 0.75 * submerged * 2.;
                 }
+            } else {
+                traction = 0. // no movement is allowed? maybe allow twitches or something
             }
 
-            let live_target_landvel : Vec2 = steer_vec2 * target_speed;
-            
-            entity::mutate_component(glider, linear_velocity(), move |linvel|{
-                *linvel *= 1.-friction;
-                let to_live_target_landvel : Vec2 = live_target_landvel - linvel.truncate();
-                if to_live_target_landvel.length_squared() < accellin * accellin {
-                    *linvel = (
-                        live_target_landvel
-                    ).extend(linvel.z);
-                } else {
-                    *linvel = (
-                        linvel.xy()
-                        + to_live_target_landvel.clamp_length_max(accellin)
-                        + to_live_target_landvel * accellerp
-                    ).extend(linvel.z);
-                }
+            if traction > 0. {
 
-                entity::set_component(glider, glider_landvel(), linvel.xy());
-            });
+                let live_target_landvel : Vec2 = steer_vec2 * stat_max_speed * traction;
+                
+                let accellin = 0.5 * traction * delta_time();
+                let accellerp = 0.02 * traction;
+                
+                entity::mutate_component(glider, linear_velocity(), move |linvel|{
+                    let to_live_target_landvel : Vec2 = live_target_landvel - linvel.truncate();
+                    if to_live_target_landvel.length_squared() < accellin * accellin {
+                        *linvel = (
+                            live_target_landvel
+                        ).extend(linvel.z);
+                    } else {
+                        *linvel = (
+                            linvel.xy()
+                            + to_live_target_landvel.clamp_length_max(accellin)
+                            + to_live_target_landvel * accellerp
+                        ).extend(linvel.z);
+                    }
 
-            entity::mutate_component(glider, linear_velocity(), move |linvel|{
-                linvel.z -= 9.81 * delta_time(); // gravity
-                if pos.z - 1.0 < 0. {
-                    linvel.z *= 0.95; // water has drag
-                    linvel.z += -(pos.z - 1.0) * delta_time() * (15. + 10. * random::<f32>()); // buoyancy slightly unpredictable
-                }
-            });
+                    entity::set_component(glider, glider_landvel(), linvel.xy());
+                });
 
-            // entity::mutate_component(glider, angular_velocity(), |angvel|{
-            //     let live_target_zangvel = angle_to_fwd * 3.0;
-            //     let to_live_target_zangvel = (live_target_zangvel - angvel.z).clamp(-0.5, 0.5);
-            //     angvel.z += to_live_target_zangvel * target_speed * delta_time(); // turn!
-            // });
+            }
+
+            {
+
+                let accellin = lerp(0.2, 0.5, traction) * delta_time();
+                let accellerp = lerp(0.02, 0.15, traction);
+                let turn_spd_intensity = lerp(3.0, 4.0, traction)
+                    * invlerp(0.1, 0.5, steer_vec2.length()).clamp(0., 1.);
+                let turn_spd_max = lerp(0.25, 1.00, traction);
+
+                entity::mutate_component(glider,glider_forward_rotvel(), move |rotvel|{
+
+                    let live_target_zangvel = angle_to_fwd * turn_spd_intensity;
+                    let to_live_target_zangvel = (live_target_zangvel - *rotvel).clamp(-turn_spd_max, turn_spd_max);
+                    
+                    if to_live_target_zangvel.abs() < accellin {
+                        *rotvel = live_target_zangvel;
+                    } else {
+                        *rotvel += to_live_target_zangvel.clamp(-accellin, accellin);
+                        *rotvel += to_live_target_zangvel * accellerp;
+                    }
+                });
+
+            }
         }
     });
 

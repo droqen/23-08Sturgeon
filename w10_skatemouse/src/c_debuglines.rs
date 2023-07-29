@@ -20,7 +20,7 @@ use crate::components::{glider_hook_pos, glider_forward};
 use crate::components::local_forward;
 
 pub fn setup(camera : EntityId) {
-    GliderForwardUI::el(camera).spawn_interactive();
+    // GliderForwardUI::el(camera).spawn_interactive();
     // HookLineUI::el(camera).spawn_interactive();
     // PhysCircleUI::el(camera).spawn_interactive();
 }
