@@ -16,6 +16,9 @@ glider = { type = "EntityId" }
 [messages.remove_cargo_from_glider.fields]
 glider = { type = "EntityId" }
 
+[messages.generate_world.fields]
+gen = { type = "Bool" }
+
 [components]
 local_forward = { type = "Vec3", attributes = ["Networked"] }
 
@@ -50,6 +53,8 @@ selfie_stick = { type = "Vec3" }
 selfie_focus_ent = { type = "EntityId" }
 selfie_pitch = { type = "F32" }
 selfie_yaw = { type = "F32" }
+
+is_mkworld_parent = { type = "Empty" }
 
 # player_tracked = { type = "Empty" }
 # player_glider = { type = "Empty" }
