@@ -72,7 +72,7 @@ pub fn setup() {
                 let b_friction_linvel_force = linvel * (-1.) * b_friction;
                 add_force_at_position(floaty_ent, pos + rot*m_center, b_force + b_friction_linvel_force, submerged_center);
                 // let b_friction_angvel_force = angvel * (-1.) * b_friction;
-                entity::mutate_component(floaty_ent, angular_velocity(), |angvel|*angvel *= (1.0 - b_friction));
+                entity::mutate_component(floaty_ent, angular_velocity(), |angvel|*angvel *= 1.0 - b_friction);
             }
 
         }
