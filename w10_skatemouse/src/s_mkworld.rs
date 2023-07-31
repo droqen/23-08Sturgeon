@@ -87,29 +87,28 @@ pub fn subscribe() {
         //     ));
         // }
         
-        for x in -10..10 {
-            for y in -10..10 {
-                if (
-                    (x % 2 == 0 || random::<f32>()<0.1)
-                    &&
-                    (y % 2 == 0 || random::<f32>()<0.1)
-                ) && random::<f32>()<0.9 {
-                    entity::add_child(parent, spawn_building_stack_at(
-                        ivec2(x,y).as_vec2().extend(0.0) * 2.));
-                    // let mut height = 2.0 + 1.6 * random::<f32>();
-                    // let mut depth = 20.0;
-                    // if random::<f32>() < 0.1 { height *= 1.0 + 5.0 * random::<f32>(); }
-                    // entity::add_child(parent, spawn_pillar_at(
-                    //     ivec2(x,y).as_vec2().extend(0.0) * 2.,
-                    //     2.,
-                    //     height,
-                    //     depth,
-                    // ));
-                }
+        for cell in gen_cells_azoa() {
+            entity::add_child(parent, spawn_building_stack_at(
+                cell.as_vec2().extend(0.0) * 5.));
+        }
+    });
+}
+
+
+pub fn gen_cells_azoa() -> Vec<IVec2> {
+    let mut cells = Vec::<IVec2>::new();
+    for x in -10..10 {
+        for y in -10..10 {
+            if (
+                (x % 2 == 0 || random::<f32>()<0.1)
+                &&
+                (y % 2 == 0 || random::<f32>()<0.1)
+            ) && random::<f32>()<0.9 {
+                cells.push(ivec2(x,y));
             }
         }
-
-    });
+    }
+    return cells;
 }
 
 pub fn spawn_pillar_at(
@@ -132,10 +131,10 @@ pub fn spawn_building_stack_at(base_pos : Vec3) -> EntityId {
     return Entity::new()
         .with(name(), "Building Stack".to_string())
         .with_merge(make_transformable())
-        .with(prefab_from_url(), asset::url("assets/MSH_Building_5x5x5_001.glb").unwrap())
+        .with(model_from_url(), asset::url("assets/MSH_Building_5x5x5_001.glb").unwrap())
         // .with(cube(),())
-        // .with(cube_collider(), vec3(1.,1.,1.))
-        .with(translation(), base_pos + vec3(0.,0.,1.0))
+        .with(cube_collider(), vec3(5.,5.,10.))
+        .with(translation(), base_pos)
         // .with(scale(), vec3(width,width,height + depth))
         .spawn();
 }
@@ -156,6 +155,7 @@ use ambient_api::components::core::{
     app::name,
     transform::{translation,scale},
     prefab::prefab_from_url,
+    model::model_from_url,
     physics::cube_collider,
     primitives::{cube, quad},
     rendering::{color,transparency_group},
