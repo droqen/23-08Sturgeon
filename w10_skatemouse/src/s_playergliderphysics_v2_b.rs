@@ -29,8 +29,8 @@ pub fn setup() {
 
             // random land position, but on the ground
             let gliderpos = vec3(
-                random::<f32>()*1.,
-                random::<f32>()*5. + 20.,
+                random::<f32>()*1. + 5.,
+                random::<f32>()*5. + 25.,
 
                 random::<f32>()*1. + 1., // drop from a slight height
             );
@@ -41,7 +41,7 @@ pub fn setup() {
                 .with(dynamic(), true)
                 .with(sphere_collider(), 0.666) // fills 66% of the corridor
                 // .with(visualize_collider(), ())
-                .with(linear_velocity(), vec3(0., 0., 6.)) // start tossed up
+                .with(linear_velocity(), vec3(0., 0., 0.)) // start with no velocity
                 .with(angular_velocity(), Vec3::ZERO)
 
                 .with(name(), "Glider".to_string())
@@ -91,8 +91,8 @@ pub fn setup() {
 
             let control = invlerp(0.01, 0.4, sub).clamp(0., 1.);
 
-            let accellin = 2.5 * delta_time() * control;
-            let accellerp = 0.01 * control;
+            let accellin = 10.0 * delta_time() * control;
+            let accellerp = 0.; // 0.01 * control;
             let desired_landvel : Vec2 = steer_vec * 20.;
 
             // entity::set_component(glider, glider_forward(), desired_landvel.extend(1.0));
@@ -122,7 +122,7 @@ pub fn setup() {
                 // if angle_to_fwd < -PI * 0.8 { angle_to_fwd = PI + angle_to_fwd; }
                 // println!("B{angle_to_fwd}");
                 let desired_rotvel = (angle_to_fwd * 3.0).clamp(-PI, PI);
-                let to_desired_rotvel = (desired_rotvel - rotvel);
+                let to_desired_rotvel = desired_rotvel - rotvel;
                 entity::mutate_component(glider, glider_forward_rotvel(), |rotvel|*rotvel += to_desired_rotvel*0.5);
             } else {
                 entity::mutate_component(glider, glider_forward_rotvel(), |rotvel|*rotvel *= 0.5); // friction i suppose?
