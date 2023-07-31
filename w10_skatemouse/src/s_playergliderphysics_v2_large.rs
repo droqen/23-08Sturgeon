@@ -39,7 +39,7 @@ pub fn setup() {
                 .with_merge(make_transformable())
                 .with(physics_controlled(), ())
                 .with(dynamic(), true)
-                .with(sphere_collider(), 0.666)
+                .with(sphere_collider(), 6.66 * 0.25) // fills 66% of the corridor
                 .with(visualize_collider(), ())
                 .with(linear_velocity(), vec3(0., 0., 0.)) // start with no velocity
                 .with(angular_velocity(), Vec3::ZERO)
@@ -76,8 +76,7 @@ pub fn setup() {
                 .with(user_id(), uid.clone())
                 .with(aspect_ratio_from_window(), entity::resources())
                 .with(is_glidercam(), ())
-                // .with(selfie_stick(), vec3(17., 17., 25.))
-                .with(selfie_stick(), vec3(10., 10., 13.))
+                .with(selfie_stick(), vec3(17., 17., 25.))
                 .with(selfie_focus_ent(), glider.clone())
                 .with(selfie_pitch(), 0.)
                 .with(selfie_yaw(), 0.)
