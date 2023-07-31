@@ -1,7 +1,7 @@
 use ambient_api::prelude::*;
 
 mod s_selfie;
-mod s_playergliderphysics_v2_large;
+mod s_playergliderphysics_v2_b;
 mod s_steering_and_camera;
 mod s_mkworld;
 mod s_cargo_snapping;
@@ -12,7 +12,7 @@ mod s_matter_buoyancy;
 pub fn main() {
 
     crate::s_selfie::setup();
-    crate::s_playergliderphysics_v2_large::setup();
+    crate::s_playergliderphysics_v2_b::setup();
     crate::s_steering_and_camera::setup_mouse_control();
     crate::s_cargo_snapping::setup();
     crate::s_deliveries::setup();
