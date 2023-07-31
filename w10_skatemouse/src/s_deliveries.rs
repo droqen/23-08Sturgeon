@@ -10,13 +10,13 @@ use ambient_api::concepts::{make_transformable, make_sphere, };
 use crate::components::{ is_glider, glider_cargo, proximity_trigger, prox_is_pickup, prox_is_dropoff, };
 
 pub fn setup() {
-    make_prox(vec3(5., 2., 1.), 15.)
-        .with(prox_is_pickup(), ())
-        .spawn();
-    make_prox(vec3(2., 5., 1.), 15.)
-        .with(prox_is_dropoff(), ())
-        .with(color(), vec3(1., 0., 1.).extend(0.25))
-        .spawn();
+    // make_prox(vec3(5., 2., 1.), 15.)
+    //     .with(prox_is_pickup(), ())
+    //     .spawn();
+    // make_prox(vec3(2., 5., 1.), 15.)
+    //     .with(prox_is_dropoff(), ())
+    //     .with(color(), vec3(1., 0., 1.).extend(0.25))
+    //     .spawn();
     query((translation(), proximity_trigger()))
     .each_frame(|triggers|{
         for (prox_ent_id,(pos,radius)) in triggers {

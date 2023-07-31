@@ -11,7 +11,7 @@ pub fn subscribe() {
         let parent = spawn_parent(parent_query);
         
         for cell in gen_cells_azoa() {
-            entity::add_child(parent, spawn_building_stack_at(
+            entity::add_child(parent, spawn_building_at(
                 cell.as_vec2().extend(0.0) * 5.));
         }
     });
@@ -50,7 +50,7 @@ pub fn spawn_pillar_at(
         .spawn();
 }
 
-pub fn spawn_building_stack_at(base_pos : Vec3) -> EntityId {
+pub fn spawn_building_at(base_pos : Vec3) -> EntityId {
 
     let asset_index = 4; // random::<u8>()%5;
     let asset_string = vec![
@@ -65,6 +65,11 @@ pub fn spawn_building_stack_at(base_pos : Vec3) -> EntityId {
 
     dbg!(asset_string);
 
+    let is_pickup = random::<bool>();
+
+    if is_pickup { spawn_pickup(base_pos); }
+    else { spawn_dropoff(base_pos); }
+
     let base_rot = Quat::from_rotation_z(PI*0.5*(random::<u8>()%4) as f32);
 
     let building_stack_base = Entity::new()
@@ -78,40 +83,28 @@ pub fn spawn_building_stack_at(base_pos : Vec3) -> EntityId {
         // .with(scale(), vec3(width,width,height + depth))
         .spawn();
 
-    for wall_local_rot_index in 0..3 {
-        let wall_local_rot = Quat::from_rotation_z(PI*0.5*wall_local_rot_index as f32);
-        entity::add_child(building_stack_base, Entity::new()
-            .with(translation(), base_pos + base_rot * wall_local_rot * vec3(0., 1.75, 2.50))
-            .with(rotation(), base_rot * wall_local_rot)
-            .with(cube_collider(), vec3(5., 1.5, 5.))
-            .spawn());
+    spawn_garage_colliders(building_stack_base, base_pos, base_rot, 5. * (1. - 0.69) / 2., false);
+
+    let darkness_colour = match is_pickup {
+        true => { vec4(0., 0., 0., 0.5) } // black for pickup zone
+        false => { vec4(1., 1., 0., 0.5) } // yellow for dropoff zone
+    };
+
+    for depth in 0..3 {
+        let darkness_plane = Entity::new()
+            .with(quad(), ())
+            .with(translation(), base_pos
+                + vec3(0., 0., 2.25)
+                + base_rot * vec3(2.25 - 0.10 * depth as f32, 0., 0.))
+            .with(rotation(), base_rot * Quat::from_rotation_y(PI * 0.5))
+            .with(scale(), vec3(5., 3., 1.))
+            .with(color(), darkness_colour) // black
+            .spawn();
+        entity::add_child(building_stack_base, darkness_plane);
+        if depth < 2 {
+            entity::add_component(darkness_plane, transparency_group(), 6);
+        }
     }
-
-    entity::add_child(building_stack_base, Entity::new()
-        .with(quad(), ())
-        .with(translation(), base_pos + vec3(0., 0., 2.25) + base_rot * vec3(2.25, 0., 0.))
-        .with(rotation(), base_rot * Quat::from_rotation_y(PI * 0.5))
-        .with(scale(), vec3(5., 3., 1.))
-        .with(color(), vec4(0., 0., 0., 0.5)) // black
-        .with(transparency_group(), 6)
-        .spawn());
-
-    entity::add_child(building_stack_base, Entity::new()
-        .with(quad(), ())
-        .with(translation(), base_pos + vec3(0., 0., 2.25) + base_rot * vec3(2.15, 0., 0.))
-        .with(rotation(), base_rot * Quat::from_rotation_y(PI * 0.5))
-        .with(scale(), vec3(5., 3., 1.))
-        .with(color(), vec4(0., 0., 0., 0.5)) // black
-        .with(transparency_group(), 6)
-        .spawn());
-
-    entity::add_child(building_stack_base, Entity::new()
-        .with(quad(), ())
-        .with(translation(), base_pos + vec3(0., 0., 2.25) + base_rot * vec3(2.05, 0., 0.))
-        .with(rotation(), base_rot * Quat::from_rotation_y(PI * 0.5))
-        .with(scale(), vec3(5., 3., 1.))
-        .with(color(), Vec4::ZERO) // black
-        .spawn());
 
     if random::<f32>() < 0.2 {
         spawn_building_ontop(building_stack_base, base_pos + vec3(0., 0., 5.));
@@ -154,6 +147,21 @@ pub fn spawn_building_ontop(beneath_ent : EntityId, base_pos : Vec3) {
 
     if random::<f32>() < 0.1 {
         spawn_building_ontop(building_ontop, base_pos + vec3(0., 0., 5. + asset_height));
+    }
+}
+
+fn spawn_garage_colliders(building_parent : EntityId, base_pos : Vec3, base_rot : Quat, wall_thickness : f32, visualize_walls : bool ) {
+    for wall_local_rot_index in 0..3 {
+        let wall_local_rot = Quat::from_rotation_z(PI*0.5*wall_local_rot_index as f32);
+        let wall = Entity::new()
+            .with(translation(), base_pos + base_rot * wall_local_rot * vec3(0., 2.50 - wall_thickness/2., 2.50))
+            .with(rotation(), base_rot * wall_local_rot)
+            .with(cube_collider(), vec3(5., wall_thickness, 5.))
+            .spawn();
+        entity::add_child(building_parent, wall);
+        if visualize_walls {
+            entity::add_component(wall, visualize_collider(), ());
+        }
     }
 }
 
@@ -239,6 +247,30 @@ fn gen_water() {
                 .spawn();
 }
 
+
+fn make_prox(pos : Vec3, radius : f32) -> Entity {
+    Entity::new()
+        // .with_merge(make_transformable())
+        // .with_merge(make_sphere())
+        .with(name(), "Prox Sphere".to_string())
+        .with(translation(), pos)
+        // .with(scale(), Vec3::splat(radius/4.))
+        // .with(color(), vec3(1., 1., 0.).extend(0.25))
+        // .with(transparency_group(), 3)
+        .with(proximity_trigger(), radius)
+}
+
+fn spawn_pickup(pos : Vec3) -> EntityId {
+    make_prox(pos, 2.0)
+        .with(prox_is_pickup(), ())
+        .spawn()
+}
+fn spawn_dropoff(pos : Vec3) -> EntityId {
+    make_prox(pos, 2.0)
+        .with(prox_is_dropoff(), ())
+        .spawn()
+}
+
 use std::f32::consts::PI;
 
 use ambient_api::entity::spawn;
@@ -256,3 +288,4 @@ use ambient_api::components::core::{
 use ambient_api::ecs::GeneralQuery;
 
 use crate::components::is_mkworld_parent;
+use crate::components::{ proximity_trigger, prox_is_dropoff, prox_is_pickup, };
